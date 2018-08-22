@@ -1,0 +1,21 @@
+.chat-list {
+  grid-area: list;
+  display: flex;
+  flex-direction: column;
+}
+.chat-list__item {
+  height: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #EEE;
+}
+.chat-list__item:hover {
+  background: #EFEFEF;
+}
+.chat-list__item:first-child {
+  border-top: 1px solid #EEE;
+}
+
+/*# sourceMappingURL=ChatList.css.map */

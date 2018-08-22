@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import './styles/css/index.css'
+import Chat from './components/Chat'
+import ChatList from './components/ChatList'
+import ChatHeader from './components/ChatHeader'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       msg: '',
-      username: ''
+      username: 'lusac',
+      rooms: [
+        {name: 'sala 1'},
+        {name: 'sala 2'},
+        {name: 'sala 3'},
+        {name: 'sala 4'},
+        {name: 'sala 5'}
+      ]
     }
   }
 
@@ -91,14 +100,19 @@ class App extends Component {
     if (this.state.username) {
       return (
         <div>
-          <small>Olá {this.state.username}!</small>
-          <form onSubmit={this.onMsgSubmit.bind(this)}>
+          <div className="chat">
+            <ChatHeader username={this.state.username} />
+            <ChatList rooms={this.state.rooms}/>
+            <Chat />
+          </div>
+
+          {/* <form onSubmit={this.onMsgSubmit.bind(this)}>
             <label>
               Msg:
               <input type="text" value={this.state.msg} onChange={this.onMsgChange.bind(this)} />
             </label>
             <input type="submit" value="Submit" />
-          </form>
+          </form> */}
         </div>
       )
     }
@@ -107,10 +121,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
         {this.renderChooseName()}
         {this.renderChatRooms()}
       </div>

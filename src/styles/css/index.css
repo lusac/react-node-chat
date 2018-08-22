@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.chat {
+  display: grid;
+  grid-template-areas: "header header header" "list room room";
+}
+
+.chat-header {
+  height: 50px;
+  color: #FFF;
+  padding: 10px;
+  display: grid;
+  grid-area: header;
+  align-items: center;
+  background: cadetblue;
+  grid-template-areas: "header-profile header-chat-name header-chat-name";
+}
+.chat-header__profile {
+  grid-area: header-profile;
+}
+.chat-header__chat-name {
+  grid-area: header-chat-name;
+}
+
+.chat-room {
+  grid-area: room;
+  background: beige;
+  border: 1px solid #EEE;
+}
+.chat-room__messages {
+  height: 75%;
+  padding: 10px;
+}
+.chat-room__input {
+  width: 85%;
+  height: 100%;
+  outline: none;
+  padding: 10px;
+}
+.chat-room__input__wrapper {
+  height: 25%;
+  padding: 10px;
+}
+
+.chat-list {
+  grid-area: list;
+  display: flex;
+  flex-direction: column;
+}
+.chat-list__item {
+  height: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #EEE;
+}
+.chat-list__item:hover {
+  background: #EFEFEF;
+}
+.chat-list__item:first-child {
+  border-top: 1px solid #EEE;
+}
+
+/*# sourceMappingURL=index.css.map */

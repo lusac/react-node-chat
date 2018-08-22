@@ -1,0 +1,22 @@
+.chat-room {
+  grid-area: room;
+  background: beige;
+  border: 1px solid #EEE;
+
+  &__messages {
+    height: 75%;
+    padding: 10px;
+  }
+
+  &__input {
+    width: 85%;
+    height: 100%;
+    outline: none;
+    padding: 10px;
+
+    &__wrapper {
+      height: 25%;
+      padding: 10px;
+    }
+  }
+}

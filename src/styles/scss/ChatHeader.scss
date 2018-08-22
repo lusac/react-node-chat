@@ -1,0 +1,18 @@
+.chat-header {
+  height: 50px;
+  color: #FFF;
+  padding: 10px;
+  display: grid;
+  grid-area: header;
+  align-items: center;
+  background: cadetblue;
+  grid-template-areas: "header-profile header-chat-name header-chat-name";
+
+  &__profile {
+    grid-area: header-profile;
+  }
+
+  &__chat-name {
+    grid-area: header-chat-name;
+  }
+}
