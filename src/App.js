@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
 import './styles/css/index.css'
 import Chat from './components/Chat'
 import ChatList from './components/ChatList'
 import ChatHeader from './components/ChatHeader'
+
+const store = configureStore()
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       msg: '',
-      username: 'lusac',
-      rooms: [
-        {name: 'sala 1'},
-        {name: 'sala 2'},
-        {name: 'sala 3'},
-        {name: 'sala 4'},
-        {name: 'sala 5'}
-      ]
+      username: 'lusac'
     }
   }
 
@@ -102,7 +99,7 @@ class App extends Component {
         <div>
           <div className="chat">
             <ChatHeader username={this.state.username} />
-            <ChatList rooms={this.state.rooms}/>
+            <ChatList />
             <Chat />
           </div>
 
@@ -120,10 +117,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.renderChooseName()}
-        {this.renderChatRooms()}
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          {this.renderChooseName()}
+          {this.renderChatRooms()}
+        </div>
+      </Provider>
     )
   }
 }
