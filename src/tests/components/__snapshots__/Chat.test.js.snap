@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chat component snapshot chat loaded 1`] = `
+<div
+  className="chat-room"
+>
+  <div
+    className="chat-room__messages"
+  >
+    <span>
+      mensagens chat
+      1
+    </span>
+  </div>
+  <div
+    className="chat-room__input__wrapper"
+  >
+    <input
+      className="chat-room__input"
+      placeholder="escreva uma mensagem"
+    />
+  </div>
+</div>
+`;
+
+exports[`Chat component snapshot chat loading 1`] = `
+<div
+  className="chat-room"
+>
+  <div
+    className="chat-room__messages"
+  >
+    <span>
+      carregando chat
+    </span>
+  </div>
+  <div
+    className="chat-room__input__wrapper"
+  >
+    <input
+      className="chat-room__input"
+      placeholder="escreva uma mensagem"
+    />
+  </div>
+</div>
+`;
+
+exports[`Chat component snapshot chat not loaded 1`] = `
+<div
+  className="chat-room"
+>
+  <div
+    className="chat-room__messages"
+  >
+    <span>
+      Nenhum chat selecionado
+    </span>
+  </div>
+  <div
+    className="chat-room__input__wrapper"
+  >
+    <input
+      className="chat-room__input"
+      placeholder="escreva uma mensagem"
+    />
+  </div>
+</div>
+`;

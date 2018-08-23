@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-class Chat extends React.Component {
+export class Chat extends React.Component {
   render() {
     return (
       <div className="chat-room">
         <div className="chat-room__messages">
           {!this.props.chat.loading && !this.props.chat.id && this.props.chat.messages.length === 0 && <span>Nenhum chat selecionado</span>}
           {this.props.chat.loading && <span>carregando chat</span>}
-          {!this.props.chat.loading && this.props.chat.id && <span>menssagens chat {this.props.chat.id}...</span>}
+          {!this.props.chat.loading && this.props.chat.id && <span>mensagens chat{this.props.chat.id}</span>}
         </div>
 
         <div className="chat-room__input__wrapper">
@@ -30,5 +30,5 @@ function mapStateToProps(state) {
   })
 }
 
-export default connect(mapStateToProps, {})(Chat)
+export default connect(mapStateToProps)(Chat)
 
