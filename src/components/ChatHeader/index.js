@@ -20,7 +20,7 @@ class ChatHeader extends React.Component {
 
 ChatHeader.propTypes = {
   username: PropTypes.string,
-  chatName: PropTypes.string
+  chat: PropTypes.object
 };
 
 function mapStateToProps(state) {
