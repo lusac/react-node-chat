@@ -7,60 +7,62 @@ import { Chat } from '../../components/Chat'
 
 configure({ adapter: new Adapter() })
 
-describe('Chat component snapshot', () => {
-  it('chat not loaded', () => {
-    const chat = { loading: false, messages: [] }
-    const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
-    expect(renderedValue).toMatchSnapshot();
-  })
-
-  it('chat loading', () => {
-    const chat = { loading: true }
-    const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
-    expect(renderedValue).toMatchSnapshot()
-  })
-
-  it('chat loaded', () => {
-    const chat = { loading: false, id: 1, messages: [] }
-    const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
-    expect(renderedValue).toMatchSnapshot()
-  })
-})
-
-describe('Chat component rendered', () => {
-  describe('chat not loaded', () => {
-    let wrapper, chat = { loading: false, messages: [] }
-
-    beforeEach(() => {
-      wrapper = shallow(<Chat chat={chat}/>)
+describe('Chat component', () => {
+  describe('snapshot', () => {
+    it('chat not loaded', () => {
+      const chat = { loading: false, messages: [] }
+      const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
+      expect(renderedValue).toMatchSnapshot();
     })
 
-    it('correct label', () => {
-      expect(wrapper.find('span').get(0).props.children).toBe('Nenhum chat selecionado')
-    });
-  })
-
-  describe('chat loading', () => {
-    let wrapper, chat = { loading: true }
-
-    beforeEach(() => {
-      wrapper = shallow(<Chat chat={chat}/>)
+    it('chat loading', () => {
+      const chat = { loading: true }
+      const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
+      expect(renderedValue).toMatchSnapshot()
     })
 
-    it('correct label', () => {
-      expect(wrapper.find('span').get(0).props.children).toBe('carregando chat')
-    });
+    it('chat loaded', () => {
+      const chat = { loading: false, id: 1, messages: [] }
+      const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
+      expect(renderedValue).toMatchSnapshot()
+    })
   })
 
-  describe('chat loaded', () => {
-    let wrapper, chat = { loading: false, id: 1, messages: [] }
+  describe('rendered', () => {
+    describe('chat not loaded', () => {
+      let wrapper, chat = { loading: false, messages: [] }
 
-    beforeEach(() => {
-      wrapper = shallow(<Chat chat={chat}/>)
+      beforeEach(() => {
+        wrapper = shallow(<Chat chat={chat}/>)
+      })
+
+      it('correct label', () => {
+        expect(wrapper.find('span').get(0).props.children).toBe('Nenhum chat selecionado')
+      });
     })
 
-    it('correct label', () => {
-      expect(wrapper.find('span').get(0).props.children.join(' ')).toBe('mensagens chat 1')
-    });
+    describe('chat loading', () => {
+      let wrapper, chat = { loading: true }
+
+      beforeEach(() => {
+        wrapper = shallow(<Chat chat={chat}/>)
+      })
+
+      it('correct label', () => {
+        expect(wrapper.find('span').get(0).props.children).toBe('carregando chat')
+      });
+    })
+
+    describe('chat loaded', () => {
+      let wrapper, chat = { loading: false, id: 1, messages: [] }
+
+      beforeEach(() => {
+        wrapper = shallow(<Chat chat={chat}/>)
+      })
+
+      it('correct label', () => {
+        expect(wrapper.find('span').get(0).props.children.join(' ')).toBe('mensagens chat 1')
+      });
+    })
   })
 })
