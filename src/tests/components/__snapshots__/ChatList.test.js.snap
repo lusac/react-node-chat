@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatList component snapshot list loaded 1`] = `
+<div
+  className="chat-list"
+/>
+`;
+
+exports[`ChatList component snapshot list loading 1`] = `
+<div
+  className="chat-list"
+>
+  <span>
+    loading...
+  </span>
+</div>
+`;

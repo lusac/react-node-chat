@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getChats } from '../../actions/chats'
 import { getChat } from '../../actions/chat'
 
-class ChatList extends React.Component {
+export class ChatList extends React.Component {
   componentDidMount() {
     this.props.getChats()
   }
