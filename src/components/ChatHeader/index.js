@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-class ChatHeader extends React.Component {
+export class ChatHeader extends React.Component {
   render() {
     return (
       <div className="chat-header">
@@ -10,9 +10,9 @@ class ChatHeader extends React.Component {
             Olá {this.props.username}!
         </div>
 
-        <div className="chat-header__chat-name">
-          {!this.props.chat.loading && this.props.chat.id && <span>chat {this.props.chat.id}</span>}
-        </div>
+        {this.props.chat.id &&
+          <div className="chat-header__chat-name">chat {this.props.chat.id}</div>
+        }
       </div>
     )
   }

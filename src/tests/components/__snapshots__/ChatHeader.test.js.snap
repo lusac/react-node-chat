@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatHeader component snapshot with chat title 1`] = `
+<div
+  className="chat-header"
+>
+  <div
+    className="chat-header__profile"
+  >
+    Olá 
+    xunda
+    !
+  </div>
+  <div
+    className="chat-header__chat-name"
+  >
+    chat 
+    1
+  </div>
+</div>
+`;
+
+exports[`ChatHeader component snapshot without chat title 1`] = `
+<div
+  className="chat-header"
+>
+  <div
+    className="chat-header__profile"
+  >
+    Olá 
+    xunda
+    !
+  </div>
+</div>
+`;
