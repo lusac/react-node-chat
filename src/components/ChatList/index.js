@@ -26,8 +26,7 @@ class ChatList extends React.Component {
 }
 
 ChatList.propTypes = {
-  rooms: PropTypes.array,
-  chats: PropTypes.func,
+  chats: PropTypes.object,
   getChats: PropTypes.func,
   getChat: PropTypes.func
 };
