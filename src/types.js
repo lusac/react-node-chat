@@ -1,7 +1,7 @@
-// CHAT
+// CHATS
 export const CHATS_LOADING = 'CHATS_LOADING'
 export const CHATS_COMPLETED = 'CHATS_COMPLETED'
 
-// TIME
-// export const USER_SET = 'USER_SET'
-// export const USER_UPDATE = 'USER_UPDATE'
+// CHAT
+export const CHAT_LOADING = 'CHAT_LOADING'
+export const CHAT_COMPLETED = 'CHAT_COMPLETED'

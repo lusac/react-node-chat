@@ -19,9 +19,3 @@ export function getChats() {
     }, 500)
   }
 }
-
-// export function selectChats(chatID) {
-//   return (dispatch) => {
-//     dispatch({type: CHAT_SELECTED, chatID: chatID})
-//   }
-// }
