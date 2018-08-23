@@ -1,3 +1,4 @@
+/* global alert WebSocket */
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
@@ -22,17 +23,17 @@ class App extends Component {
   }
 
   wsConnect() {
-    this.state.connection = new WebSocket('ws://127.0.0.1:3001')
+    let connection = new WebSocket('ws://127.0.0.1:3001')
 
-    this.state.connection.onopen = function () {
+    connection.onopen = function () {
       console.log('WS OPENED!')
     }
 
-    this.state.connection.onerror = function (error) {
-      alert('WS ERROR!')
+    connection.onerror = function (error) {
+      alert(`WS ERROR: ${error}`)
     }
 
-    this.state.connection.onmessage = function (message) {
+    connection.onmessage = function (message) {
       // try to decode json (I assume that each message
       // from server is json)
       try {
@@ -43,18 +44,21 @@ class App extends Component {
       }
 
       if (json.type === 'color') {
+        // pass...
       } else if (json.type === 'history') { // entire message history
         for (var i=0; i < json.data.length; i++) {
-        console.log(json.data[i].author, json.data[i].text,
-            json.data[i].color, new Date(json.data[i].time))
+          console.log(json.data[i].author, json.data[i].text, json.data[i].color, new Date(json.data[i].time))
         }
       } else if (json.type === 'message') { // it's a single message
-        console.log(json.data.author, json.data.text,
-                   json.data.color, new Date(json.data.time))
+        console.log(json.data.author, json.data.text, json.data.color, new Date(json.data.time))
       } else {
         console.log('Hmm..., I\'ve never seen JSON like this:', json)
       }
     }
+
+    this.setState({
+      connection: connection
+    })
   }
 
   onMsgChange(e) {
