@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 class ChatHeader extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class ChatHeader extends React.Component {
         </div>
 
         <div className="chat-header__chat-name">
-          chat 1
+          {!this.props.chat.loading && this.props.chat.id && <span>chat {this.props.chat.id}</span>}
         </div>
       </div>
     )
@@ -22,4 +23,12 @@ ChatHeader.propTypes = {
   chatName: PropTypes.string
 };
 
-export default ChatHeader;
+function mapStateToProps(state) {
+  return ({
+    chat: state.chat
+  })
+}
+
+export default connect(mapStateToProps, {})(ChatHeader)
+
+
