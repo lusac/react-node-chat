@@ -1,17 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChatList component snapshot list loaded 1`] = `
-<div
-  className="chat-list"
+exports[`ChatList component snapshot empty list 1`] = `
+<rooms
+  rooms={Object {}}
 />
 `;
 
-exports[`ChatList component snapshot list loading 1`] = `
+exports[`ChatList component snapshot with rooms 1`] = `
 <div
   className="chat-list"
 >
-  <span>
-    loading...
+  <span
+    className="chat-list__item"
+    onClick={[Function]}
+  >
+    room 1
+  </span>
+  <span
+    className="chat-list__item"
+    onClick={[Function]}
+  >
+    room 2
+  </span>
+  <span
+    className="chat-list__item"
+    onClick={[Function]}
+  >
+    room 3
   </span>
 </div>
 `;
