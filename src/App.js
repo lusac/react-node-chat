@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import './styles/css/index.css'
 import Chat from './components/Chat'
 import ChatList from './components/ChatList'
@@ -83,9 +82,5 @@ class App extends Component {
     )
   }
 }
-
-App.propTypes = {
-  connectSocket: PropTypes.func,
-};
 
 export default App
