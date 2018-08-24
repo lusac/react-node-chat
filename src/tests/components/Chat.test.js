@@ -3,37 +3,31 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import renderer from 'react-test-renderer'
 import Adapter from 'enzyme-adapter-react-16';
-import { Chat } from '../../components/Chat'
+import Chat from '../../components/Chat'
 
 configure({ adapter: new Adapter() })
 
 describe('Chat component', () => {
   describe('snapshot', () => {
-    it('chat not loaded', () => {
-      const chat = { loading: false, messages: [] }
-      const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
+    it('room not selected', () => {
+      const room = {}
+      const renderedValue =  renderer.create(<Chat room={room} />).toJSON()
       expect(renderedValue).toMatchSnapshot();
     })
 
-    it('chat loading', () => {
-      const chat = { loading: true }
-      const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
-      expect(renderedValue).toMatchSnapshot()
-    })
-
-    it('chat loaded', () => {
-      const chat = { loading: false, id: 1, messages: [] }
-      const renderedValue =  renderer.create(<Chat chat={chat} />).toJSON()
+    it('room selected', () => {
+      const room = { id: 1, msgs: [] }
+      const renderedValue =  renderer.create(<Chat room={room} />).toJSON()
       expect(renderedValue).toMatchSnapshot()
     })
   })
 
   describe('rendered', () => {
-    describe('chat not loaded', () => {
-      let wrapper, chat = { loading: false, messages: [] }
+    describe('room not selected', () => {
+      let wrapper, room = {}
 
       beforeEach(() => {
-        wrapper = shallow(<Chat chat={chat}/>)
+        wrapper = shallow(<Chat room={room}/>)
       })
 
       it('correct label', () => {
@@ -41,27 +35,15 @@ describe('Chat component', () => {
       });
     })
 
-    describe('chat loading', () => {
-      let wrapper, chat = { loading: true }
+    describe('room selected', () => {
+      let wrapper, room = { id: 1, msgs: ['mensagens chat 1'] }
 
       beforeEach(() => {
-        wrapper = shallow(<Chat chat={chat}/>)
+        wrapper = shallow(<Chat room={room}/>)
       })
 
       it('correct label', () => {
-        expect(wrapper.find('span').get(0).props.children).toBe('carregando chat')
-      });
-    })
-
-    describe('chat loaded', () => {
-      let wrapper, chat = { loading: false, id: 1, messages: [] }
-
-      beforeEach(() => {
-        wrapper = shallow(<Chat chat={chat}/>)
-      })
-
-      it('correct label', () => {
-        expect(wrapper.find('span').get(0).props.children.join(' ')).toBe('mensagens chat 1')
+        expect(wrapper.find('.chat-room__messages div').get(0).props.children).toBe('mensagens chat 1')
       });
     })
   })
