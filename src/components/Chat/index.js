@@ -1,4 +1,3 @@
-/* global alert */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -21,7 +20,7 @@ export class Chat extends React.Component {
 
   handleWsConnection() {
     if (this.props.socket.socket) {
-      this.props.socket.socket.on('message', (msg) => {
+      this.props.socket.socket.off('message').on('message', (msg) => {
         this.setState({
           msgs: [...this.state.msgs, msg]
         })
