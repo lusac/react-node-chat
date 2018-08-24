@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getChats } from '../../actions/chats'
 import { getChat } from '../../actions/chat'
@@ -10,7 +10,10 @@ export class ChatList extends React.Component {
   }
 
   selectChat(id) {
-    this.props.getChat(id)
+    if (this.props.socket.socket) {
+      this.props.getChat(id)
+      this.props.socket.socket.emit('room', id)
+    }
   }
 
   render() {
@@ -28,14 +31,15 @@ export class ChatList extends React.Component {
 ChatList.propTypes = {
   chats: PropTypes.object,
   getChats: PropTypes.func,
-  getChat: PropTypes.func
+  getChat: PropTypes.func,
+  socket: PropTypes.object
 };
-
 
 function mapStateToProps(state) {
   return ({
     chat: state.chat,
-    chats: state.chats
+    chats: state.chats,
+    socket: state.socket
   })
 }
 

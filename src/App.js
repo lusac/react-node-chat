@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-import configureStore from './store/configureStore'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import './styles/css/index.css'
 import Chat from './components/Chat'
 import ChatList from './components/ChatList'
 import ChatHeader from './components/ChatHeader'
-
-const store = configureStore()
+import { connectSocket } from './actions/socket'
 
 class App extends Component {
   constructor() {
@@ -14,6 +13,10 @@ class App extends Component {
     this.state = {
       username: 'lusac'
     }
+  }
+
+  componentDidMount() {
+    this.props.connectSocket()
   }
 
   onUsernameSubmit(e) {
@@ -38,7 +41,7 @@ class App extends Component {
     }
   }
 
-  renderChatRooms() {
+  renderChat() {
     if (this.state.username) {
       return (
         <div className="chat">
@@ -52,14 +55,24 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          {this.renderChooseName()}
-          {this.renderChatRooms()}
-        </div>
-      </Provider>
+      <div className="App">
+        {this.renderChooseName()}
+        {this.renderChat()}
+      </div>
     )
   }
 }
 
-export default App
+App.propTypes = {
+  connectSocket: PropTypes.func,
+};
+
+function mapStateToProps(state) {
+  return ({
+    socket: state.socket
+  })
+}
+
+export default connect(mapStateToProps, {
+  connectSocket
+})(App)
