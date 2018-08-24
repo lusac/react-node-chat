@@ -1,22 +1,43 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import './styles/css/index.css'
 import Chat from './components/Chat'
 import ChatList from './components/ChatList'
 import ChatHeader from './components/ChatHeader'
-import { connectSocket } from './actions/socket'
+import socketIOClient from 'socket.io-client'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      username: 'lusac'
+      username: 'lusac',
+      rooms: {},
+      room: {}
     }
   }
 
   componentDidMount() {
-    this.props.connectSocket()
+    var socket = socketIOClient('http://localhost:3001')
+
+    socket.on('connect', () => {
+      // connect
+    });
+
+    socket.on('rooms', (rooms) => {
+      this.setState({
+        rooms: rooms
+      })
+    })
+
+    socket.on('joined room', (room) => {
+      this.setState({
+        room: room
+      })
+    })
+
+    this.setState({
+      socket: socket
+    })
   }
 
   onUsernameSubmit(e) {
@@ -45,9 +66,9 @@ class App extends Component {
     if (this.state.username) {
       return (
         <div className="chat">
-          <ChatHeader username={this.state.username} />
-          <ChatList />
-          <Chat />
+          <ChatHeader username={this.state.username} room={this.state.room} socket={this.state.socket} />
+          <ChatList rooms={this.state.rooms} socket={this.state.socket} />
+          <Chat room={this.state.room} socket={this.state.socket} />
         </div>
       )
     }
@@ -67,12 +88,4 @@ App.propTypes = {
   connectSocket: PropTypes.func,
 };
 
-function mapStateToProps(state) {
-  return ({
-    socket: state.socket
-  })
-}
-
-export default connect(mapStateToProps, {
-  connectSocket
-})(App)
+export default App
