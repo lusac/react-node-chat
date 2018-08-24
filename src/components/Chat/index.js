@@ -22,7 +22,6 @@ export class Chat extends React.Component {
   handleWsConnection() {
     if (this.props.socket.socket) {
       this.props.socket.socket.on('message', (msg) => {
-        debugger
         this.setState({
           msgs: [...this.state.msgs, msg]
         })
