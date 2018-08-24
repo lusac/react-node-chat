@@ -3,55 +3,55 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import renderer from 'react-test-renderer'
 import Adapter from 'enzyme-adapter-react-16';
-import { ChatHeader } from '../../components/ChatHeader'
+import ChatHeader from '../../components/ChatHeader'
 
 configure({ adapter: new Adapter() })
 
 describe('ChatHeader component', () => {
   describe('snapshot', () => {
     it('without chat title', () => {
-      const chat = { loading: true }
-      const renderedValue =  renderer.create(<ChatHeader username='xunda' chat={chat} />).toJSON()
+      const room = {}
+      const renderedValue =  renderer.create(<ChatHeader username='xunda' room={room} />).toJSON()
       expect(renderedValue).toMatchSnapshot();
     })
 
     it('with chat title', () => {
-      const chat = { loading: false, id: 1 }
-      const renderedValue =  renderer.create(<ChatHeader username='xunda' chat={chat} />).toJSON()
+      const room = { id: 1, name: 'room name' }
+      const renderedValue =  renderer.create(<ChatHeader username='xunda' room={room} />).toJSON()
       expect(renderedValue).toMatchSnapshot();
     })
   })
 
   describe('rendered', () => {
-    describe('without chat title', () => {
-      let wrapper, chat = {}
+    describe('without room title', () => {
+      let wrapper, room = {}
 
       beforeEach(() => {
-        wrapper = shallow(<ChatHeader username='xunda' chat={chat} />)
+        wrapper = shallow(<ChatHeader username='xunda' room={room} />)
       })
 
       it('correct username', () => {
-        expect(wrapper.find('.chat-header__profile').get(0).props.children.join('')).toBe('Olá xunda!')
+        expect(wrapper.find('.chat-header__profile__name').get(0).props.children.join('')).toBe('Olá xunda!')
       })
 
-      it('no chat title', () => {
+      it('no room title', () => {
         expect(wrapper.find('.chat-header__chat-name').get(0)).toBeUndefined()
       })
     })
 
-    describe('with chat title', () => {
-      let wrapper, chat = { id: 1 }
+    describe('with room title', () => {
+      let wrapper, room = { id: 1, name: 'room name' }
 
       beforeEach(() => {
-        wrapper = shallow(<ChatHeader username='xunda' chat={chat} />)
+        wrapper = shallow(<ChatHeader username='xunda' room={room} />)
       })
 
       it('correct username', () => {
-        expect(wrapper.find('.chat-header__profile').get(0).props.children.join('')).toBe('Olá xunda!')
+        expect(wrapper.find('.chat-header__profile__name').get(0).props.children.join('')).toBe('Olá xunda!')
       })
 
       it('correct chat title', () => {
-        expect(wrapper.find('.chat-header__chat-name').get(0).props.children.join('')).toBe('chat 1')
+        expect(wrapper.find('.chat-header__chat-name').get(0).props.children).toBe('room name')
       })
     })
   })

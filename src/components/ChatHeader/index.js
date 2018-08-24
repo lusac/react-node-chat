@@ -12,12 +12,12 @@ export default class ChatHeader extends React.Component {
     return (
       <div className="chat-header">
         <div className="chat-header__profile">
-          Olá {this.props.username}!
+          <span className="chat-header__profile__name">Olá {this.props.username}!</span>
           <span onClick={this.createRoom.bind(this)}> Nova sala</span>
         </div>
 
-        {this.props.room &&
-          <div className="chat-header__chat-name">chat {this.props.room.name}</div>
+        {this.props.room && this.props.room.id &&
+          <div className="chat-header__chat-name">{this.props.room.name}</div>
         }
       </div>
     )
