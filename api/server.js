@@ -14,7 +14,8 @@ function createRoom(name) {
 }
 
 io.on('connection', function(socket) {
-  console.log('a user connected');
+  console.log('user connected');
+  io.emit('rooms', rooms);
 
   socket.on('join room', function(room) {
     socket.join(room);
