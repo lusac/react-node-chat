@@ -8,7 +8,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #e1e1e1;
 
     &__name {
       color: #00c876;
@@ -30,7 +29,6 @@
       padding: 18px;
       display: flex;
       justify-content: space-between;
-      border-right: 1px solid #e1e1e1;
 
       span:first-child {
         font-weight: bold;
@@ -41,7 +39,6 @@
   &__item {
     cursor: pointer;
     padding: 6px 18px;
-    border-right: 1px solid #e1e1e1;
 
     &:hover {
       background: #EFEFEF;
@@ -50,6 +47,7 @@
     &.selected {
       background: #FFF;
       border-right: none;
+      position: relative;
     }
   }
 

@@ -127,6 +127,9 @@ button.blue:hover {
   justify-content: flex-end;
 }
 
+.channel {
+  box-shadow: 0px 0px 0px 1px #e1e1e1;
+}
 .channel__empty-state {
   height: 100vh;
   display: flex;
@@ -190,7 +193,6 @@ button.blue:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid #e1e1e1;
 }
 .channel-list__header__name {
   color: #00c876;
@@ -210,7 +212,6 @@ button.blue:hover {
   padding: 18px;
   display: flex;
   justify-content: space-between;
-  border-right: 1px solid #e1e1e1;
 }
 .channel-list__section__title span:first-child {
   font-weight: bold;
@@ -218,7 +219,6 @@ button.blue:hover {
 .channel-list__item {
   cursor: pointer;
   padding: 6px 18px;
-  border-right: 1px solid #e1e1e1;
 }
 .channel-list__item:hover {
   background: #EFEFEF;
@@ -226,6 +226,7 @@ button.blue:hover {
 .channel-list__item.selected {
   background: #FFF;
   border-right: none;
+  position: relative;
 }
 .channel-list .plus {
   width: 16px;
