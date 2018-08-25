@@ -9,7 +9,14 @@
     border-top: none;
   }
 
-  &__username {
+  &__date {
+    color: #AAA;
+    font-size: 12px;
+    margin-left: 10px;
+    font-weight: normal;
+  }
+
+  &__info {
     color: #666;
     font-size: 14px;
   }

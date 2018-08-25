@@ -254,7 +254,13 @@ button.blue:hover {
 .message:last-child {
   border-top: none;
 }
-.message__username {
+.message__date {
+  color: #AAA;
+  font-size: 12px;
+  margin-left: 10px;
+  font-weight: normal;
+}
+.message__info {
   color: #666;
   font-size: 14px;
 }

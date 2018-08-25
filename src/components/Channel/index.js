@@ -1,4 +1,3 @@
-/* global document */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Message from '../Message'
@@ -43,7 +42,8 @@ export default class Channel extends React.Component {
       channelID: this.props.channel.id,
       msg: {
         username: this.props.username,
-        text: this.state.msg
+        text: this.state.msg,
+        date: new Date()
       }
     })
     this.setState({
@@ -84,7 +84,6 @@ export default class Channel extends React.Component {
                 className="channel__chat-input"
                 value={this.state.msg}
                 onChange={this.onMsgChange.bind(this)} />
-              {/* <input type="submit" value="Submit" /> */}
             </form>
           </div>
         </div>
