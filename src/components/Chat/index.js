@@ -48,24 +48,30 @@ export default class Chat extends React.Component {
 
   render() {
     return (
-      <div className="chat-room">
-        <div className="chat-room__messages">
-          {!this.props.room.id && <span>Nenhum chat selecionado</span>}
-          {this.props.room.id && this.state.msgs.map((msg, i) => <div key={i}>{msg}</div> )}
+      <div className="room">
+        <div className="room__header">
+          header
         </div>
 
-        {this.props.room.id &&
-          <div className="chat-room__input__wrapper">
-            <form onSubmit={this.onMsgSubmit.bind(this)}>
-              <input
-                placeholder="escreva uma mensagem"
-                className="chat-room__input"
-                value={this.state.msg}
-                onChange={this.onMsgChange.bind(this)} />
-              {/* <input type="submit" value="Submit" /> */}
-            </form>
+        <div className="room__section">
+          <div className="room__chat">
+            {!this.props.room.id && <span>Nenhum chat selecionado</span>}
+            {this.props.room.id && this.state.msgs.map((msg, i) => <div key={i}>{msg}</div> )}
           </div>
-        }
+
+          {this.props.room.id &&
+            <div className="room__chat-input__wrapper">
+              <form onSubmit={this.onMsgSubmit.bind(this)}>
+                <input
+                  placeholder="escreva uma mensagem"
+                  className="room__chat-input"
+                  value={this.state.msg}
+                  onChange={this.onMsgChange.bind(this)} />
+                {/* <input type="submit" value="Submit" /> */}
+              </form>
+            </div>
+          }
+        </div>
       </div>
     )
   }

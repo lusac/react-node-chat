@@ -1,0 +1,33 @@
+.room {
+  background: #FFF;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #e1e1e1;
+  }
+
+  &__section {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__messages {
+    height: 75%;
+    padding: 10px;
+  }
+
+  &__chat-input {
+    width: 85%;
+    height: 100%;
+    outline: none;
+    padding: 10px;
+
+    &__wrapper {
+      height: 25%;
+      padding: 10px;
+    }
+  }
+}
