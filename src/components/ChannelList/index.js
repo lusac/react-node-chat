@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NewChatModal from '../NewChatModal'
+import NewChannelModal from '../NewChannelModal'
 
-export default class ChatList extends React.Component {
+export default class ChannelList extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -11,7 +11,7 @@ export default class ChatList extends React.Component {
   }
 
   selectChat(id) {
-    this.props.socket.emit('join room', id)
+    this.props.socket.emit('join channel', id)
   }
 
   toggleModal() {
@@ -29,21 +29,21 @@ export default class ChatList extends React.Component {
 
         <div className="chat-list__section">
           <div className="chat-list__section__title"
-            onClick={this.toggleModal.bind(this)}>Chats +</div>
+            onClick={this.toggleModal.bind(this)}>Canais +</div>
 
-          {Object.keys(this.props.rooms).map(id => {
+          {Object.keys(this.props.channels).map(id => {
             return (
               <span
                 key={id}
-                className={"chat-list__item " + (this.props.room.id === id ? 'selected' : '')}
+                className={"chat-list__item " + (this.props.channel.id === id ? 'selected' : '')}
                 onClick={this.selectChat.bind(this, id)}>
-                  # {this.props.rooms[id].name}</span>
+                  # {this.props.channels[id].name}</span>
             )
           })}
         </div>
 
         {this.state.showModal &&
-          <NewChatModal
+          <NewChannelModal
             toggleModal={this.toggleModal.bind(this)}
             socket={this.props.socket} />
         }
@@ -52,8 +52,8 @@ export default class ChatList extends React.Component {
   }
 }
 
-ChatList.propTypes = {
-  room: PropTypes.object,
-  rooms: PropTypes.object,
+ChannelList.propTypes = {
+  channel: PropTypes.object,
+  channels: PropTypes.object,
   socket: PropTypes.object
 };

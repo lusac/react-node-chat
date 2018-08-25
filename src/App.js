@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './styles/css/index.css'
-import Chat from './components/Chat'
-import ChatList from './components/ChatList'
+import Channel from './components/Channel'
+import ChannelList from './components/ChannelList'
 import socketIOClient from 'socket.io-client'
 
 class App extends Component {
@@ -9,8 +9,8 @@ class App extends Component {
     super()
     this.state = {
       username: 'lusac',
-      rooms: {},
-      room: {}
+      channels: {},
+      channel: {}
     }
   }
 
@@ -21,15 +21,15 @@ class App extends Component {
       // connect
     });
 
-    socket.on('rooms', (rooms) => {
+    socket.on('channels', (channels) => {
       this.setState({
-        rooms: rooms
+        channels: channels
       })
     })
 
-    socket.on('joined room', (room) => {
+    socket.on('joined channel', (channel) => {
       this.setState({
-        room: room
+        channel: channel
       })
     })
 
@@ -64,12 +64,12 @@ class App extends Component {
     if (this.state.username) {
       return (
         <div className="chat">
-          <ChatList
-            room={this.state.room}
-            rooms={this.state.rooms}
+          <ChannelList
+            channel={this.state.channel}
+            channels={this.state.channels}
             socket={this.state.socket} />
-          <Chat
-            room={this.state.room}
+          <Channel
+            channel={this.state.channel}
             socket={this.state.socket} />
         </div>
       )

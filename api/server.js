@@ -3,9 +3,9 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var uuidv4 = require('uuid/v4');
-var rooms = {}
+var channels = {}
 
-function createRoom(name) {
+function createChannel(name) {
   return {
     id: uuidv4(),
     name: name,
@@ -15,29 +15,29 @@ function createRoom(name) {
 
 io.on('connection', function(socket) {
   console.log('user connected');
-  io.emit('rooms', rooms);
+  io.emit('channels', channels);
 
-  socket.on('join room', function(room) {
-    socket.join(room);
-    io.emit('joined room', rooms[room]);
-    console.log('user connected to room: ' + room);
+  socket.on('join channel', function(channel) {
+    socket.join(channel);
+    io.emit('joined channel', channels[channel]);
+    console.log('user connected to channel: ' + channel);
   });
 
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
 
-  socket.on('create room', function(name) {
-    let room = createRoom(name);
-    rooms[room.id] = room;
-    io.emit('rooms', rooms);
-    console.log('criando room ' + name);
+  socket.on('create channel', function(name) {
+    let channel = createChannel(name);
+    channels[channel.id] = channel;
+    io.emit('channels', channels);
+    console.log('criando channel ' + name);
   });
 
-  socket.on('message', function({roomID, msg} = {}) {
-    io.to(roomID).emit('message', msg);
-    rooms[roomID].msgs.push(msg);
-    console.log('message: ' + msg + ' to room: ' + roomID);
+  socket.on('message', function({channelID, msg} = {}) {
+    io.to(channelID).emit('message', msg);
+    channels[channelID].msgs.push(msg);
+    console.log('message: ' + msg + ' to channel: ' + channelID);
   });
 
 });

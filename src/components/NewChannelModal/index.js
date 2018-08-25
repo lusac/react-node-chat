@@ -1,30 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class NewChatModal extends React.Component {
+export default class NewChannelModal extends React.Component {
   constructor() {
     super()
     this.state = {
-      chatName: ''
+      channelName: ''
     }
   }
 
-  createChat(chatName) {
+  createChat(channelName) {
     if (this.props.socket) {
-      this.props.socket.emit('create room', chatName)
+      this.props.socket.emit('create channel', channelName)
     }
   }
 
   onChatNameChange(e) {
     this.setState({
-      chatName: e.target.value
+      channelName: e.target.value
     })
   }
 
   onFormSubmit(e) {
     e.preventDefault()
-    if (this.state.chatName) {
-      this.createChat(this.state.chatName)
+    if (this.state.channelName) {
+      this.createChat(this.state.channelName)
       this.props.toggleModal()
     }
   }
@@ -53,7 +53,7 @@ export default class NewChatModal extends React.Component {
                   type="button"
                   onClick={this.props.toggleModal.bind(this)}>cancelar</button>
                 <button
-                  disabled={!this.state.chatName}
+                  disabled={!this.state.channelName}
                   className="blue"
                   type="submit">salvar</button>
               </span>
@@ -65,7 +65,7 @@ export default class NewChatModal extends React.Component {
   }
 }
 
-NewChatModal.propTypes = {
+NewChannelModal.propTypes = {
   socket: PropTypes.object,
   toggleModal: PropTypes.func
 };

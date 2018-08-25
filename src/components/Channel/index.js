@@ -1,25 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Chat extends React.Component {
+export default class Channel extends React.Component {
   constructor(props) {
     super()
     this.state = {
       msg: '',
-      room: props.room || {},
-      msgs: props.room.msgs || []
+      channel: props.channel || {},
+      msgs: props.channel.msgs || []
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.room.id !== prevProps.room.id) {
-      this.updateRoomConnection()
+    if (this.props.channel.id !== prevProps.channel.id) {
+      this.updateChannelConnection()
     }
   }
 
-  updateRoomConnection() {
+  updateChannelConnection() {
     this.setState({
-      msgs: this.props.room.msgs
+      msgs: this.props.channel.msgs
     }, () => {
       this.props.socket.off('message').on('message', (msg) => {
         this.setState({
@@ -38,7 +38,7 @@ export default class Chat extends React.Component {
   onMsgSubmit(e) {
     e.preventDefault()
     this.props.socket.emit('message', {
-      roomID: this.props.room.id,
+      channelID: this.props.channel.id,
       msg: this.state.msg
     })
     this.setState({
@@ -48,23 +48,23 @@ export default class Chat extends React.Component {
 
   render() {
     return (
-      <div className="room">
-        <div className="room__header">
+      <div className="channel">
+        <div className="channel__header">
           header
         </div>
 
-        <div className="room__section">
-          <div className="room__chat">
-            {!this.props.room.id && <span>Nenhum chat selecionado</span>}
-            {this.props.room.id && this.state.msgs.map((msg, i) => <div key={i}>{msg}</div> )}
+        <div className="channel__section">
+          <div className="channel__chat">
+            {!this.props.channel.id && <span>Nenhum canal selecionado</span>}
+            {this.props.channel.id && this.state.msgs.map((msg, i) => <div key={i}>{msg}</div> )}
           </div>
 
-          {this.props.room.id &&
-            <div className="room__chat-input__wrapper">
+          {this.props.channel.id &&
+            <div className="channel__chat-input__wrapper">
               <form onSubmit={this.onMsgSubmit.bind(this)}>
                 <input
                   placeholder="escreva uma mensagem"
-                  className="room__chat-input"
+                  className="channel__chat-input"
                   value={this.state.msg}
                   onChange={this.onMsgChange.bind(this)} />
                 {/* <input type="submit" value="Submit" /> */}
@@ -77,7 +77,7 @@ export default class Chat extends React.Component {
   }
 }
 
-Chat.propTypes = {
-  room: PropTypes.object,
+Channel.propTypes = {
+  channel: PropTypes.object,
   socket: PropTypes.object
 }
