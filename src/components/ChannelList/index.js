@@ -28,8 +28,12 @@ export default class ChannelList extends React.Component {
         </div>
 
         <div className="channel-list__section">
-          <div className="channel-list__section__title"
-            onClick={this.toggleModal.bind(this)}>Canais +</div>
+          <div className="channel-list__section__title">
+            <span>Canais</span>
+            <span
+              className="plus"
+              onClick={this.toggleModal.bind(this)}>+</span>
+          </div>
 
           {Object.keys(this.props.channels).map(id => {
             return (

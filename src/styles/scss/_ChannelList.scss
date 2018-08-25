@@ -28,7 +28,13 @@
 
     &__title {
       padding: 18px;
+      display: flex;
+      justify-content: space-between;
       border-right: 1px solid #e1e1e1;
+
+      span:first-child {
+        font-weight: bold;
+      }
     }
   }
 
@@ -44,6 +50,23 @@
     &.selected {
       background: #FFF;
       border-right: none;
+    }
+  }
+
+  .plus {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 60px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #333;
+
+    &:hover {
+      color: #888;
+      border-color: #888;
     }
   }
 }
