@@ -162,7 +162,7 @@ button.blue:hover {
   padding: 20px;
   display: flex;
   overflow: auto;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 .channel__messages {
   height: 75%;
@@ -246,12 +246,13 @@ button.blue:hover {
 
 .message {
   display: flex;
+  flex-shrink: 0;
   padding: 18px 0;
   flex-direction: column;
-  border-bottom: 2px dotted #CCC;
+  border-top: 2px dotted #CCC;
 }
 .message:last-child {
-  border-bottom: none;
+  border-top: none;
 }
 .message__username {
   color: #666;

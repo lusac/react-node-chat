@@ -37,7 +37,7 @@
     padding: 20px;
     display: flex;
     overflow: auto;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   &__messages {

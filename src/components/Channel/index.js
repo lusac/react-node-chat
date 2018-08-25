@@ -78,11 +78,11 @@ export default class Channel extends React.Component {
           </div>
 
           <div className="channel__section">
-            <div className="channel__chat">
-              {this.state.msgs.map((msg, i) =>
-                <Message key={i} message={msg} />
-              )}
-            </div>
+            {this.state.msgs.map((msg, i) =>
+              <Message key={i} message={this.state.msgs[this.state.msgs.length-1-i]} />
+            )}
+            {!this.state.msgs.length &&
+              <span>nenhuma mensagem</span>}
           </div>
 
           <div className="channel__footer">
