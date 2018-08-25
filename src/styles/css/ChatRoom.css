@@ -1,7 +1,5 @@
 .chat-room {
-  grid-area: room;
-  background: beige;
-  border: 1px solid #EEE;
+  background: #FFF;
 }
 .chat-room__messages {
   height: 75%;

@@ -23,11 +23,24 @@ export default class ChatList extends React.Component {
   render() {
     return (
       <div className="chat-list">
-        <div onClick={this.toggleModal.bind(this)}>Chats +</div>
+        <div className="chat-list__header">
+          Ola lusac
+        </div>
 
-        {Object.keys(this.props.rooms).map(id => {
-          return <span key={id} className="chat-list__item" onClick={this.selectChat.bind(this, id)}>{this.props.rooms[id].name}</span>
-        })}
+        <div className="chat-list__section">
+          <div className="chat-list__section__title"
+            onClick={this.toggleModal.bind(this)}>Chats +</div>
+
+          {Object.keys(this.props.rooms).map(id => {
+            return (
+              <span
+                key={id}
+                className={"chat-list__item " + (this.props.room.id === id ? 'selected' : '')}
+                onClick={this.selectChat.bind(this, id)}>
+                  # {this.props.rooms[id].name}</span>
+            )
+          })}
+        </div>
 
         {this.state.showModal &&
           <NewChatModal
@@ -40,6 +53,7 @@ export default class ChatList extends React.Component {
 }
 
 ChatList.propTypes = {
+  room: PropTypes.object,
   rooms: PropTypes.object,
   socket: PropTypes.object
 };

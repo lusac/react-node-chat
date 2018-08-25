@@ -15,8 +15,10 @@ body, html {
 }
 
 .chat {
+  height: 100vh;
   display: grid;
-  grid-template-areas: "header header header" "list room room";
+  grid-template-rows: auto 30px;
+  grid-template-columns: 230px 1fr;
 }
 
 button {
@@ -123,27 +125,8 @@ button.blue:hover {
   justify-content: flex-end;
 }
 
-.chat-header {
-  height: 50px;
-  color: #FFF;
-  padding: 10px;
-  display: grid;
-  grid-area: header;
-  align-items: center;
-  background: cadetblue;
-  grid-template-areas: "header-profile header-chat-name header-chat-name";
-}
-.chat-header__profile {
-  grid-area: header-profile;
-}
-.chat-header__chat-name {
-  grid-area: header-chat-name;
-}
-
 .chat-room {
-  grid-area: room;
-  background: beige;
-  border: 1px solid #EEE;
+  background: #FFF;
 }
 .chat-room__messages {
   height: 75%;
@@ -161,23 +144,37 @@ button.blue:hover {
 }
 
 .chat-list {
-  grid-area: list;
+  display: grid;
+  height: 100vh;
+  background: #f2f2f2;
+  grid-template-rows: 30px auto;
+}
+.chat-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #e1e1e1;
+}
+.chat-list__section {
+  overflow: auto;
   display: flex;
   flex-direction: column;
 }
+.chat-list__section__title {
+  padding: 18px;
+  border-right: 1px solid #e1e1e1;
+}
 .chat-list__item {
-  height: 50px;
-  display: flex;
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #EEE;
+  padding: 6px 18px;
+  border-right: 1px solid #e1e1e1;
 }
 .chat-list__item:hover {
   background: #EFEFEF;
 }
-.chat-list__item:first-child {
-  border-top: 1px solid #EEE;
+.chat-list__item.selected {
+  background: #FFF;
+  border-right: none;
 }
 
 /*# sourceMappingURL=index.css.map */

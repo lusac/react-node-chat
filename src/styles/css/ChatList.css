@@ -1,21 +1,35 @@
 .chat-list {
-  grid-area: list;
+  display: grid;
+  height: 100vh;
+  background: #f2f2f2;
+  grid-template-rows: 30px auto;
+}
+.chat-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #e1e1e1;
+}
+.chat-list__section {
+  overflow: auto;
   display: flex;
   flex-direction: column;
 }
+.chat-list__section__title {
+  padding: 18px;
+  border-right: 1px solid #e1e1e1;
+}
 .chat-list__item {
-  height: 50px;
-  display: flex;
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #EEE;
+  padding: 6px 18px;
+  border-right: 1px solid #e1e1e1;
 }
 .chat-list__item:hover {
   background: #EFEFEF;
 }
-.chat-list__item:first-child {
-  border-top: 1px solid #EEE;
+.chat-list__item.selected {
+  background: #FFF;
+  border-right: none;
 }
 
 /*# sourceMappingURL=ChatList.css.map */

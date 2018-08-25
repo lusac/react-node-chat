@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './styles/css/index.css'
 import Chat from './components/Chat'
 import ChatList from './components/ChatList'
-import ChatHeader from './components/ChatHeader'
 import socketIOClient from 'socket.io-client'
 
 class App extends Component {
@@ -65,9 +64,13 @@ class App extends Component {
     if (this.state.username) {
       return (
         <div className="chat">
-          <ChatHeader username={this.state.username} room={this.state.room} socket={this.state.socket} />
-          <ChatList rooms={this.state.rooms} socket={this.state.socket} />
-          <Chat room={this.state.room} socket={this.state.socket} />
+          <ChatList
+            room={this.state.room}
+            rooms={this.state.rooms}
+            socket={this.state.socket} />
+          <Chat
+            room={this.state.room}
+            socket={this.state.socket} />
         </div>
       )
     }
