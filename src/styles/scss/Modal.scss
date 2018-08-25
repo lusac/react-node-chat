@@ -1,0 +1,76 @@
+.modal {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+
+  &:before {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    position: absolute;
+    background: rgba(0,0,0, 0.7);
+  }
+
+  &__container {
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  &__close {
+    top: 10px;
+    right: 10px;
+    position: absolute;
+  }
+
+  &__dialog {
+    padding: 40px;
+    display: flex;
+    background: #FFF;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+
+    label,
+    input {
+      align-self: start;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 32px;
+      margin-bottom: 27px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      outline: none;
+      font-size: 14px;
+      border: 1px solid #CCC;
+
+      &:focus {
+        border: 1px solid #AAA;
+      }
+    }
+
+    &__btns {
+      width: 100%;
+      display: flex;
+      margin-top: 40px;
+      justify-content: flex-end;
+    }
+  }
+}
