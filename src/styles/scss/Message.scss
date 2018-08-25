@@ -1,0 +1,16 @@
+.message {
+  display: flex;
+  padding: 18px 0;
+  flex-direction: column;
+  border-bottom: 2px dotted #CCC;
+
+  &__username {
+    color: #666;
+    font-size: 14px;
+  }
+
+  &__text {
+    color: #333;
+    font-size: 15px;
+  }
+}

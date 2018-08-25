@@ -70,6 +70,7 @@ class App extends Component {
             channels={this.state.channels}
             socket={this.state.socket} />
           <Channel
+            username={this.state.username}
             channel={this.state.channel}
             socket={this.state.socket} />
         </div>

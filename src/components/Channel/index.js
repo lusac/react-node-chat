@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Message from '../Message'
 
 export default class Channel extends React.Component {
   constructor(props) {
@@ -39,7 +40,10 @@ export default class Channel extends React.Component {
     e.preventDefault()
     this.props.socket.emit('message', {
       channelID: this.props.channel.id,
-      msg: this.state.msg
+      msg: {
+        username: this.props.username,
+        text: this.state.msg
+      }
     })
     this.setState({
       msg: ''
@@ -66,21 +70,21 @@ export default class Channel extends React.Component {
 
           <div className="channel__section">
             <div className="channel__chat">
-              {this.state.msgs.map((msg, i) => <div key={i}>{msg}</div> )}
+              {this.state.msgs.map((msg, i) =>
+                <Message key={i} message={msg} />
+              )}
             </div>
+          </div>
 
-            {this.props.channel.id &&
-              <div className="channel__chat-input__wrapper">
-                <form onSubmit={this.onMsgSubmit.bind(this)}>
-                  <input
-                    placeholder="escreva uma mensagem"
-                    className="channel__chat-input"
-                    value={this.state.msg}
-                    onChange={this.onMsgChange.bind(this)} />
-                  {/* <input type="submit" value="Submit" /> */}
-                </form>
-              </div>
-            }
+          <div className="channel__footer">
+            <form onSubmit={this.onMsgSubmit.bind(this)}>
+              <input
+                placeholder="escreva uma mensagem"
+                className="channel__chat-input"
+                value={this.state.msg}
+                onChange={this.onMsgChange.bind(this)} />
+              {/* <input type="submit" value="Submit" /> */}
+            </form>
           </div>
         </div>
       )
@@ -98,6 +102,7 @@ export default class Channel extends React.Component {
 }
 
 Channel.propTypes = {
+  socket: PropTypes.object,
   channel: PropTypes.object,
-  socket: PropTypes.object
+  username: PropTypes.string
 }

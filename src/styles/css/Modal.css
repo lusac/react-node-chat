@@ -35,28 +35,13 @@
   justify-items: center;
   flex-direction: column;
 }
-.modal__dialog label,
-.modal__dialog input {
-  align-self: start;
-}
-.modal__dialog label {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
 .modal__dialog h3 {
   font-size: 32px;
   margin-bottom: 27px;
 }
+.modal__dialog label,
 .modal__dialog input {
-  width: 100%;
-  padding: 14px;
-  outline: none;
-  font-size: 14px;
-  border: 1px solid #CCC;
-}
-.modal__dialog input:focus {
-  border: 1px solid #AAA;
+  align-self: start;
 }
 .modal__dialog__btns {
   width: 100%;

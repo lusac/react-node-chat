@@ -3,6 +3,7 @@
   &__empty-state {
     height: 100vh;
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
 
@@ -19,7 +20,7 @@
     display: grid;
     height: 100vh;
     background: #FFF;
-    grid-template-rows: 70px auto;
+    grid-template-rows: 70px auto 70px;
   }
 
   &__header {
@@ -44,14 +45,20 @@
   }
 
   &__chat-input {
-    width: 85%;
-    height: 100%;
+    width: 95%;
+    height: 60%;
     outline: none;
     padding: 10px;
+    font-size: 14px;
+  }
 
-    &__wrapper {
-      height: 25%;
-      padding: 10px;
+  &__footer {
+    form {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

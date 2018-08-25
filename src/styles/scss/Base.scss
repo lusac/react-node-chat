@@ -1,17 +1,35 @@
 * {
+  font-family: arial;
   box-sizing: border-box;
 }
 
 h1, h2, h3, p {
   margin: 0;
   padding: 0;
-  font-family: arial;
 }
 
 body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  outline: none;
+  font-size: 14px;
+  border: 1px solid #CCC;
+
+  &:focus {
+    border: 1px solid #AAA;
+  }
 }
 
 .chat {

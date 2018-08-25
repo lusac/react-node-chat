@@ -38,32 +38,14 @@
     justify-items: center;
     flex-direction: column;
 
-    label,
-    input {
-      align-self: start;
-    }
-
-    label {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
-
     h3 {
       font-size: 32px;
       margin-bottom: 27px;
     }
 
+    label,
     input {
-      width: 100%;
-      padding: 14px;
-      outline: none;
-      font-size: 14px;
-      border: 1px solid #CCC;
-
-      &:focus {
-        border: 1px solid #AAA;
-      }
+      align-self: start;
     }
 
     &__btns {
