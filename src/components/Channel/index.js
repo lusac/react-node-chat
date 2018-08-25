@@ -23,20 +23,12 @@ export default class Channel extends React.Component {
     this.setState({
       msgs: this.props.channel.msgs
     }, () => {
-      this.scrollBottom()
       this.props.socket.off('message').on('message', (msg) => {
         this.setState({
           msgs: [...this.state.msgs, msg]
-        }, () => {
-          this.scrollBottom()
         })
       })
     })
-  }
-
-  scrollBottom() {
-    let c = document.getElementsByClassName('channel__section')[0]
-    c.scrollTop = c.scrollHeight
   }
 
   onMsgChange(e) {
