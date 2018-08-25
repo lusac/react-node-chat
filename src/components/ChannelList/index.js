@@ -22,20 +22,20 @@ export default class ChannelList extends React.Component {
 
   render() {
     return (
-      <div className="chat-list">
-        <div className="chat-list__header">
+      <div className="channel-list">
+        <div className="channel-list__header">
           Ola lusac
         </div>
 
-        <div className="chat-list__section">
-          <div className="chat-list__section__title"
+        <div className="channel-list__section">
+          <div className="channel-list__section__title"
             onClick={this.toggleModal.bind(this)}>Canais +</div>
 
           {Object.keys(this.props.channels).map(id => {
             return (
               <span
                 key={id}
-                className={"chat-list__item " + (this.props.channel.id === id ? 'selected' : '')}
+                className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
                 onClick={this.selectChat.bind(this, id)}>
                   # {this.props.channels[id].name}</span>
             )

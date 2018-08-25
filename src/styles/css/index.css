@@ -154,36 +154,36 @@ button.blue:hover {
   padding: 10px;
 }
 
-.chat-list {
+.channel-list {
   display: grid;
   height: 100vh;
   background: #f2f2f2;
   grid-template-rows: 30px auto;
 }
-.chat-list__header {
+.channel-list__header {
   display: flex;
   align-items: center;
   justify-content: center;
   border-right: 1px solid #e1e1e1;
 }
-.chat-list__section {
+.channel-list__section {
   overflow: auto;
   display: flex;
   flex-direction: column;
 }
-.chat-list__section__title {
+.channel-list__section__title {
   padding: 18px;
   border-right: 1px solid #e1e1e1;
 }
-.chat-list__item {
+.channel-list__item {
   cursor: pointer;
   padding: 6px 18px;
   border-right: 1px solid #e1e1e1;
 }
-.chat-list__item:hover {
+.channel-list__item:hover {
   background: #EFEFEF;
 }
-.chat-list__item.selected {
+.channel-list__item.selected {
   background: #FFF;
   border-right: none;
 }
