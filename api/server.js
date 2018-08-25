@@ -37,7 +37,7 @@ io.on('connection', function(socket) {
   socket.on('message', function({channelID, msg} = {}) {
     io.to(channelID).emit('message', msg);
     channels[channelID].msgs.push(msg);
-    console.log('message: ' + msg.txt + 'from: ' + msg.username + 'to channel: ' + channelID);
+    console.log('message: ' + msg.text + ' from: ' + msg.username + ' to channel: ' + channelID);
   });
 
 });
