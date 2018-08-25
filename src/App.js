@@ -65,6 +65,7 @@ class App extends Component {
       return (
         <div className="chat">
           <ChannelList
+            username={this.state.username}
             channel={this.state.channel}
             channels={this.state.channels}
             socket={this.state.socket} />

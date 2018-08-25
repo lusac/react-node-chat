@@ -46,32 +46,52 @@ export default class Channel extends React.Component {
     })
   }
 
+  renderEmptyState() {
+    if (!this.props.channel.id) {
+      return (
+        <div className="channel__empty-state">
+          <strong>Escolha ou crie um canal para conversar com outras pessoas!</strong>
+        </div>
+      )
+    }
+  }
+
+  renderChannelContent() {
+    if (this.props.channel.id) {
+      return(
+        <div className="channel__content">
+          <div className="channel__header">
+            {this.props.channel.name}
+          </div>
+
+          <div className="channel__section">
+            <div className="channel__chat">
+              {this.state.msgs.map((msg, i) => <div key={i}>{msg}</div> )}
+            </div>
+
+            {this.props.channel.id &&
+              <div className="channel__chat-input__wrapper">
+                <form onSubmit={this.onMsgSubmit.bind(this)}>
+                  <input
+                    placeholder="escreva uma mensagem"
+                    className="channel__chat-input"
+                    value={this.state.msg}
+                    onChange={this.onMsgChange.bind(this)} />
+                  {/* <input type="submit" value="Submit" /> */}
+                </form>
+              </div>
+            }
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="channel">
-        <div className="channel__header">
-          header
-        </div>
-
-        <div className="channel__section">
-          <div className="channel__chat">
-            {!this.props.channel.id && <span>Nenhum canal selecionado</span>}
-            {this.props.channel.id && this.state.msgs.map((msg, i) => <div key={i}>{msg}</div> )}
-          </div>
-
-          {this.props.channel.id &&
-            <div className="channel__chat-input__wrapper">
-              <form onSubmit={this.onMsgSubmit.bind(this)}>
-                <input
-                  placeholder="escreva uma mensagem"
-                  className="channel__chat-input"
-                  value={this.state.msg}
-                  onChange={this.onMsgChange.bind(this)} />
-                {/* <input type="submit" value="Submit" /> */}
-              </form>
-            </div>
-          }
-        </div>
+        {this.renderEmptyState()}
+        {this.renderChannelContent()}
       </div>
     )
   }

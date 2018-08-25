@@ -24,7 +24,7 @@ export default class ChannelList extends React.Component {
     return (
       <div className="channel-list">
         <div className="channel-list__header">
-          Ola lusac
+          Olá <strong className="channel-list__header__name">{this.props.username}</strong>!
         </div>
 
         <div className="channel-list__section">
@@ -53,7 +53,8 @@ export default class ChannelList extends React.Component {
 }
 
 ChannelList.propTypes = {
+  socket: PropTypes.object,
   channel: PropTypes.object,
+  username: PropTypes.string,
   channels: PropTypes.object,
-  socket: PropTypes.object
 };

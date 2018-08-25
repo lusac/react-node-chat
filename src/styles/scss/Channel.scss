@@ -1,16 +1,40 @@
-.room {
-  background: #FFF;
+.channel {
 
-  &__header {
+  &__empty-state {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #e1e1e1;
+
+    strong {
+      width: 50%;
+      color: #333;
+      font-size: 24px;
+      max-width: 300px;
+      font-family: arial;
+    }
+  }
+
+  &__content {
+    display: grid;
+    height: 100vh;
+    background: #FFF;
+    grid-template-rows: 70px auto;
+  }
+
+  &__header {
+    display: flex;
+    padding: 0 20px;
+    font-weight: bold;
+    align-items: center;
+    color: #00c876;
+    box-shadow: 0px 2px 1px 0px #eaeaea;
   }
 
   &__section {
-    overflow: auto;
+    padding: 20px;
     display: flex;
+    overflow: auto;
     flex-direction: column;
   }
 
