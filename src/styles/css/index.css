@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -11,6 +17,110 @@ body, html {
 .chat {
   display: grid;
   grid-template-areas: "header header header" "list room room";
+}
+
+button {
+  border: 0;
+  color: #FFF;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 9px 19px;
+  margin-left: 10px;
+  outline: none;
+}
+button[disabled] {
+  color: #888;
+  cursor: default;
+  background: #EEE !important;
+  border: 1px solid #EEE !important;
+}
+button[disabled]:hover {
+  color: #888;
+  background: #EEE !important;
+  border: 1px solid #EEE !important;
+}
+button.red {
+  background: #dc3545;
+  border-color: 1px solid #dc3545;
+}
+button.red:hover {
+  background: #c82333;
+  border-color: #bd2130;
+}
+button.blue {
+  background: #007bff;
+  border: 1px solid #007bff;
+}
+button.blue:hover {
+  background: #0069d9;
+  border-color: #0062cc;
+}
+
+.modal {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+.modal:before {
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+}
+.modal__container {
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.modal__close {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+}
+.modal__dialog {
+  padding: 40px;
+  display: flex;
+  background: #FFF;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+.modal__dialog label,
+.modal__dialog input {
+  align-self: start;
+}
+.modal__dialog label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.modal__dialog h3 {
+  font-size: 32px;
+  margin-bottom: 27px;
+}
+.modal__dialog input {
+  width: 100%;
+  padding: 14px;
+  outline: none;
+  font-size: 14px;
+  border: 1px solid #CCC;
+}
+.modal__dialog input:focus {
+  border: 1px solid #AAA;
+}
+.modal__dialog__btns {
+  width: 100%;
+  display: flex;
+  margin-top: 40px;
+  justify-content: flex-end;
 }
 
 .chat-header {
