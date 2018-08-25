@@ -229,6 +229,9 @@ button.blue:hover {
   flex-direction: column;
   border-bottom: 2px dotted #CCC;
 }
+.message:last-child {
+  border-bottom: none;
+}
 .message__username {
   color: #666;
   font-size: 14px;
