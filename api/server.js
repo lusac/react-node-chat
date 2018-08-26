@@ -1,8 +1,9 @@
 /* global require */
-const io = require('socket.io')(3001);
-const redisAdapter = require('socket.io-redis');
-const uuidv4 = require('uuid/v4');
-const channels = {}
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var uuidv4 = require('uuid/v4');
+var channels = {}
 
 function createChannel(name) {
   return {
@@ -11,8 +12,6 @@ function createChannel(name) {
     msgs: []
   }
 }
-
-io.adapter(redisAdapter({ host: 'localhost', port: 6379 }));
 
 io.on('connection', function(socket) {
   console.log('user connected');
@@ -45,4 +44,8 @@ io.on('connection', function(socket) {
   //   socket.nickname = nickname;
   //   console.log('settings username: ' + nickname);
   // });
+});
+
+http.listen(3001, function() {
+  console.log('listening on *:3001');
 });
