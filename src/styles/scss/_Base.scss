@@ -38,3 +38,15 @@ input {
   grid-template-rows: auto 30px;
   grid-template-columns: 230px 1fr;
 }
+
+.badge {
+  width: auto;
+  color: #FFF;
+  font-size: 12px;
+  min-width: 28px;
+  padding: 2px 10px;
+  text-align: center;
+  border-radius: 50px;
+  font-weight: bolder;
+  background: #f93d3d;
+}

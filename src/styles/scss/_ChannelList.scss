@@ -37,8 +37,10 @@
   }
 
   &__item {
+    display: flex;
     cursor: pointer;
     padding: 6px 18px;
+    justify-content: space-between;
 
     &:hover {
       background: #EFEFEF;

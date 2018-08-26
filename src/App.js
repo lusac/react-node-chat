@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       username: '',
       channels: {},
-      channel: {}
+      channel: {},
+      notifications: {}
     }
   }
 
@@ -29,12 +30,45 @@ class App extends Component {
 
     socket.on('joined channel', (channel) => {
       this.setState({
-        channel: channel
+        channel: channel,
+        notifications: {
+          ...this.state.notifications,
+          [channel.id]: 0
+        }
       })
+    })
+
+    socket.on('message', (data) => {
+      if (data.channelID === this.state.channel.id) {
+        this.handleMessageFromCurrentChannel(data)
+      } else {
+        this.handleMessageFromOtherChannel(data)
+      }
     })
 
     this.setState({
       socket: socket
+    })
+  }
+
+  handleMessageFromCurrentChannel(data) {
+    this.setState({
+      channel: {
+        ...this.state.channel,
+        msgs: [
+          ...this.state.channel.msgs,
+          data.msg
+        ]
+      }
+    })
+  }
+
+  handleMessageFromOtherChannel(data) {
+    this.setState({
+      notifications: {
+        ...this.state.notifications,
+        [data.channelID]: this.state.notifications[data.channelID] + 1 || 1
+      }
     })
   }
 
@@ -70,11 +104,12 @@ class App extends Component {
             username={this.state.username}
             channel={this.state.channel}
             channels={this.state.channels}
-            socket={this.state.socket} />
+            socket={this.state.socket}
+            notifications={this.state.notifications} />
           <Channel
             username={this.state.username}
             channel={this.state.channel}
-            socket={this.state.socket} />
+            socket={this.state.socket}  />
         </div>
       )
     }

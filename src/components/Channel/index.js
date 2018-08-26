@@ -7,27 +7,8 @@ export default class Channel extends React.Component {
     super()
     this.state = {
       msg: '',
-      channel: props.channel || {},
-      msgs: props.channel.msgs || []
+      channel: props.channel || {}
     }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.channel.id !== prevProps.channel.id) {
-      this.updateChannelConnection()
-    }
-  }
-
-  updateChannelConnection() {
-    this.setState({
-      msgs: this.props.channel.msgs
-    }, () => {
-      this.props.socket.off('message').on('message', (msg) => {
-        this.setState({
-          msgs: [...this.state.msgs, msg]
-        })
-      })
-    })
   }
 
   onMsgChange(e) {
@@ -70,10 +51,10 @@ export default class Channel extends React.Component {
           </div>
 
           <div className="channel__section">
-            {this.state.msgs.map((msg, i) =>
-              <Message key={i} message={this.state.msgs[this.state.msgs.length-1-i]} />
+            {this.props.channel.msgs.map((msg, i) =>
+              <Message key={i} message={this.props.channel.msgs[this.props.channel.msgs.length-1-i]} />
             )}
-            {!this.state.msgs.length &&
+            {!this.props.channel.msgs.length &&
               <span>nenhuma mensagem</span>}
           </div>
 

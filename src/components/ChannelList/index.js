@@ -41,7 +41,10 @@ export default class ChannelList extends React.Component {
                 key={id}
                 className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
                 onClick={this.selectChat.bind(this, id)}>
-                  # {this.props.channels[id].name}</span>
+                  # {this.props.channels[id].name}
+                {!!this.props.notifications[id] &&
+                  <span className="badge">{this.props.notifications[id]}</span>}
+              </span>
             )
           })}
         </div>
@@ -61,4 +64,5 @@ ChannelList.propTypes = {
   channel: PropTypes.object,
   username: PropTypes.string,
   channels: PropTypes.object,
+  notifications: PropTypes.object
 };
