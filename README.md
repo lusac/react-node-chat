@@ -9,3 +9,4 @@
     -Mudando arquitetura. Remoção do Redux, pois o chat foi pra um caminho onde ele não seria necessário. Como comecei com tudo mockado, arquitetei pensando em requests, oq nãoa contece no WS
 8) Estrutura OK.
 9) Layout + refactor grid e componentes
+10) Redis Adapter
