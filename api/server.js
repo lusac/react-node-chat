@@ -40,4 +40,9 @@ io.on('connection', function(socket) {
     channels[channelID].msgs.push(msg);
     console.log('message: ' + msg.text + ' from: ' + msg.username + ' to channel: ' + channelID);
   });
+
+  // socket.on('set username', function(nickname) {
+  //   socket.nickname = nickname;
+  //   console.log('settings username: ' + nickname);
+  // });
 });

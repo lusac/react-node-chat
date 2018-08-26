@@ -8,17 +8,17 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      username: 'lusac',
+      username: '',
       channels: {},
       channel: {}
     }
   }
 
-  componentDidMount() {
+  connectToSocket() {
     var socket = socketIOClient('http://localhost:3001')
 
     socket.on('connect', () => {
-      // connect
+      // socket.emit('set username', this.state.username)
     });
 
     socket.on('channels', (channels) => {
@@ -42,6 +42,8 @@ class App extends Component {
     e.preventDefault()
     this.setState({
       username: this.draftUsername
+    }, () => {
+      this.connectToSocket()
     })
   }
 
