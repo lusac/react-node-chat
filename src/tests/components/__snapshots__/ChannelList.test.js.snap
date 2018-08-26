@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChannelList component snapshot empty list 1`] = `
+<div
+  className="channel-list"
+>
+  <div
+    className="channel-list__header"
+  >
+    Olá 
+    <strong
+      className="channel-list__header__name"
+    />
+    !
+  </div>
+  <div
+    className="channel-list__section"
+  >
+    <div
+      className="channel-list__section__title"
+    >
+      <span>
+        Canais
+      </span>
+      <span
+        className="plus"
+        onClick={[Function]}
+      >
+        +
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ChannelList component snapshot with channels 1`] = `
+<div
+  className="channel-list"
+>
+  <div
+    className="channel-list__header"
+  >
+    Olá 
+    <strong
+      className="channel-list__header__name"
+    />
+    !
+  </div>
+  <div
+    className="channel-list__section"
+  >
+    <div
+      className="channel-list__section__title"
+    >
+      <span>
+        Canais
+      </span>
+      <span
+        className="plus"
+        onClick={[Function]}
+      >
+        +
+      </span>
+    </div>
+    <span
+      className="channel-list__item "
+      onClick={[Function]}
+    >
+      <span
+        className="channel-list__name"
+      >
+        # 
+        channel 1
+      </span>
+    </span>
+    <span
+      className="channel-list__item "
+      onClick={[Function]}
+    >
+      <span
+        className="channel-list__name"
+      >
+        # 
+        channel 2
+      </span>
+    </span>
+    <span
+      className="channel-list__item "
+      onClick={[Function]}
+    >
+      <span
+        className="channel-list__name"
+      >
+        # 
+        channel 3
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ChannelList component snapshot with notifications 1`] = `
+<div
+  className="channel-list"
+>
+  <div
+    className="channel-list__header"
+  >
+    Olá 
+    <strong
+      className="channel-list__header__name"
+    />
+    !
+  </div>
+  <div
+    className="channel-list__section"
+  >
+    <div
+      className="channel-list__section__title"
+    >
+      <span>
+        Canais
+      </span>
+      <span
+        className="plus"
+        onClick={[Function]}
+      >
+        +
+      </span>
+    </div>
+    <span
+      className="channel-list__item "
+      onClick={[Function]}
+    >
+      <span
+        className="channel-list__name"
+      >
+        # 
+        channel 1
+      </span>
+      <span
+        className="badge"
+      >
+        3
+      </span>
+    </span>
+    <span
+      className="channel-list__item "
+      onClick={[Function]}
+    >
+      <span
+        className="channel-list__name"
+      >
+        # 
+        channel 2
+      </span>
+    </span>
+    <span
+      className="channel-list__item "
+      onClick={[Function]}
+    >
+      <span
+        className="channel-list__name"
+      >
+        # 
+        channel 3
+      </span>
+      <span
+        className="badge"
+      >
+        10
+      </span>
+    </span>
+  </div>
+</div>
+`;
