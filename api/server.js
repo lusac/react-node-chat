@@ -17,10 +17,10 @@ io.on('connection', function(socket) {
   console.log('user connected');
   io.emit('channels', channels);
 
-  socket.on('join channel', function(channel) {
-    socket.join(channel);
-    io.emit('joined channel', channels[channel]);
-    console.log('user connected to channel: ' + channel);
+  socket.on('join channel', function(channelID) {
+    socket.join(channelID);
+    socket.emit('joined channel', channels[channelID]);
+    console.log('user connected to channel: ' + channelID);
   });
 
   socket.on('disconnect', function() {
