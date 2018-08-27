@@ -45,9 +45,9 @@ describe('ChannelList component', () => {
     })
 
     it('correct label', () => {
-      expect(wrapper.find('.channel-list__name').get(0).props.children.join('')).toBe('# channel 1')
-      expect(wrapper.find('.channel-list__name').get(1).props.children.join('')).toBe('# channel 2')
-      expect(wrapper.find('.channel-list__name').get(2).props.children.join('')).toBe('# channel 3')
+      expect(wrapper.find('.channel-list__name').at(0).text()).toBe('# channel 1')
+      expect(wrapper.find('.channel-list__name').at(1).text()).toBe('# channel 2')
+      expect(wrapper.find('.channel-list__name').at(2).text()).toBe('# channel 3')
     })
 
     it('correct badges', () => {
