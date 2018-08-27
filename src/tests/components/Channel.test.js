@@ -1,4 +1,4 @@
-/* global it describe expect beforeEach */
+/* global it describe expect beforeEach jest */
 import React from 'react'
 import { shallow, configure } from 'enzyme'
 import renderer from 'react-test-renderer'
@@ -70,5 +70,41 @@ describe('Channel component', () => {
         expect(wrapper.find('Message').length).toBe(1)
       })
     })
+  })
+
+  it('onMsgChange method', () => {
+    let
+      channel = { id: 1, name: 'channel 1', msgs: [] },
+      wrapper = shallow(<Channel channel={channel}/>)
+
+    expect(wrapper.instance().state.msg).toBe('')
+    wrapper.instance().onMsgChange({target: {value: 'hello!'}})
+    expect(wrapper.instance().state.msg).toBe('hello!')
+  })
+
+  it('onMsgSubmit method', () => {
+    const d = new Date('2017-06-13T04:41:20')
+    Date = class extends Date {
+      constructor() {
+        return d
+      }
+    }
+
+    let
+      e = { preventDefault: () => 'oie' },
+      socket = { emit: (a, b) => (a, b) },
+      channel = { id: 1, name: 'channel 1', msgs: [] },
+      wrapper = shallow(<Channel username={'xunda'} socket={socket} channel={channel}/>)
+
+    wrapper.instance().onMsgChange({target: {value: 'hello!'}})
+
+    const spyPreventDefault = jest.spyOn(e, 'preventDefault')
+    const spyEmit = jest.spyOn(wrapper.instance().props.socket, 'emit')
+
+    wrapper.instance().onMsgSubmit(e)
+
+    expect(spyPreventDefault).toHaveBeenCalled()
+    expect(spyEmit).toHaveBeenCalledWith('message', {"channelID": 1, "msg": {"date": new Date(), "text": "hello!", "username": 'xunda'}})
+    expect(wrapper.instance().state.msg).toBe('')
   })
 })
