@@ -30,23 +30,36 @@ exports[`Channel component snapshot channel selected with msgs 1`] = `
       <div
         className="message"
       >
-        <strong
-          className="message__info"
+        <div
+          className="message__left"
         >
-          <span>
-            xunda
-          </span>
           <span
-            className="message__date"
+            className="message__photo"
           >
-            11:22 AM
+            X
           </span>
-        </strong>
-        <span
-          className="message__text"
+        </div>
+        <div
+          className="message__right"
         >
-          hello!
-        </span>
+          <strong
+            className="message__info"
+          >
+            <span>
+              xunda
+            </span>
+            <span
+              className="message__date"
+            >
+              8/27/2018, 11:22 AM
+            </span>
+          </strong>
+          <span
+            className="message__text"
+          >
+            hello!
+          </span>
+        </div>
       </div>
     </div>
     <div
