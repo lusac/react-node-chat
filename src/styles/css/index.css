@@ -259,11 +259,10 @@ button.blue:hover {
 }
 
 .message {
-  display: flex;
-  flex-shrink: 0;
+  display: grid;
   padding: 18px 0;
-  flex-direction: column;
   border-top: 2px dotted #CCC;
+  grid-template-columns: 55px auto;
 }
 .message:last-child {
   border-top: none;
@@ -281,6 +280,23 @@ button.blue:hover {
 .message__text {
   color: #333;
   font-size: 15px;
+}
+.message__photo {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  color: #FFF;
+  font-size: 18px;
+  background: red;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px 50px;
+}
+.message__right {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-choose-name {
