@@ -13,7 +13,7 @@ exports[`Message component snapshot channel not selected 1`] = `
     <span
       className="message__date"
     >
-      10:18 AM
+      11:22 AM
     </span>
   </strong>
   <span

@@ -27,7 +27,7 @@ describe('Channel component', () => {
 
     it('channel selected with msgs', () => {
       const
-        channel = { id: 1, msgs: [{username: 'xunda', text: 'hello!', date: new Date()}] },
+        channel = { id: 1, msgs: [{username: 'xunda', text: 'hello!', date: new Date('Mon Aug 27 2018 11:22:33')}] },
         username = 'xunda',
         renderedValue =  renderer.create(<Channel channel={channel} username={username} />).toJSON()
       expect(renderedValue).toMatchSnapshot()
@@ -60,7 +60,7 @@ describe('Channel component', () => {
     })
 
     describe('channel selected with msgs', () => {
-      let wrapper, channel = { id: 1, name: 'channel 1', msgs: [{text:'hello!', username: 'xunda', date: new Date()}] }
+      let wrapper, channel = { id: 1, name: 'channel 1', msgs: [{text:'hello!', username: 'xunda', date: new Date('Mon Aug 27 2018 11:22:33')}] }
 
       beforeEach(() => {
         wrapper = shallow(<Channel channel={channel}/>)

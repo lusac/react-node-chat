@@ -11,7 +11,7 @@ describe('Message component', () => {
   describe('snapshot', () => {
     it('channel not selected', () => {
       const
-        message = {username: 'xunda', text: 'hello!', date: new Date()},
+        message = {username: 'xunda', text: 'hello!', date: new Date('Mon Aug 27 2018 11:22:33')},
         renderedValue =  renderer.create(<Message message={message} />).toJSON()
       expect(renderedValue).toMatchSnapshot()
     })
@@ -19,7 +19,7 @@ describe('Message component', () => {
 
   it('formatDate method', () => {
     let
-      message = {username: 'xunda', text: 'hello!', date: new Date()},
+      message = {username: 'xunda', text: 'hello!', date: new Date('Mon Aug 27 2018 11:22:33')},
       wrapper = shallow(<Message message={message}/>),
       date = wrapper.instance().formatDate(new Date('Mon Aug 27 2018 11:22:33'))
     expect(date).toBe('11:22 AM')
