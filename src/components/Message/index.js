@@ -11,7 +11,7 @@ export default class Message extends React.Component {
     return (
       <div className="message">
         <div className="message__left">
-          <span className="message__photo">{this.props.message.username[0].toLocaleUpperCase()}</span>
+          <span className={"message__photo color" + this.props.message.color}>{this.props.message.username[0].toLocaleUpperCase()}</span>
         </div>
 
         <div className="message__right">

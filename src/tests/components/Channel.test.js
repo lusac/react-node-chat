@@ -93,8 +93,9 @@ describe('Channel component', () => {
     let
       e = { preventDefault: () => 'oie' },
       socket = { emit: (a, b) => (a, b) },
+      user = {name: 'xunda', color: 2},
       channel = { id: 1, name: 'channel 1', msgs: [] },
-      wrapper = shallow(<Channel username={'xunda'} socket={socket} channel={channel}/>)
+      wrapper = shallow(<Channel user={user} socket={socket} channel={channel}/>)
 
     wrapper.instance().onMsgChange({target: {value: 'hello!'}})
 
@@ -104,7 +105,7 @@ describe('Channel component', () => {
     wrapper.instance().onMsgSubmit(e)
 
     expect(spyPreventDefault).toHaveBeenCalled()
-    expect(spyEmit).toHaveBeenCalledWith('message', {"channelID": 1, "msg": {"date": new Date(), "text": "hello!", "username": 'xunda'}})
+    expect(spyEmit).toHaveBeenCalledWith('message', {"channelID": 1, "msg": {"color": 2, "date": new Date(), "text": "hello!", "username": 'xunda'}})
     expect(wrapper.instance().state.msg).toBe('')
   })
 })

@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      user: {},
       channels: {},
       channel: {},
       notifications: {}
@@ -75,7 +75,10 @@ class App extends Component {
   onUsernameSubmit(e) {
     e.preventDefault()
     this.setState({
-      username: this.draftUsername
+      user: {
+        name: this.draftUsername,
+        color: Math.floor((Math.random() * 6) + 1)
+      }
     }, () => {
       this.connectToSocket()
     })
@@ -86,11 +89,11 @@ class App extends Component {
   }
 
   renderChooseName() {
-    if (!this.state.username) {
+    if (!this.state.user.name) {
       return (
-        <div className="form-choose-name" onSubmit={this.onUsernameSubmit.bind(this)}>
+        <div className="form-choose-name">
           <div className="form-choose-name__content">
-            <form>
+            <form onSubmit={this.onUsernameSubmit.bind(this)}>
               <label>Escolha um apelido</label>
               <input
                 type="text"
@@ -106,17 +109,17 @@ class App extends Component {
   }
 
   renderChat() {
-    if (this.state.username) {
+    if (this.state.user.name) {
       return (
         <div className="chat">
           <ChannelList
-            username={this.state.username}
+            username={this.state.user.name}
             channel={this.state.channel}
             channels={this.state.channels}
             socket={this.state.socket}
             notifications={this.state.notifications} />
           <Channel
-            username={this.state.username}
+            user={this.state.user}
             channel={this.state.channel}
             socket={this.state.socket}  />
         </div>

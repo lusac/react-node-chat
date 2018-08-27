@@ -22,9 +22,10 @@ export default class Channel extends React.Component {
     this.props.socket.emit('message', {
       channelID: this.props.channel.id,
       msg: {
-        username: this.props.username,
+        date: new Date(),
         text: this.state.msg,
-        date: new Date()
+        color: this.props.user.color,
+        username: this.props.user.name
       }
     })
     this.setState({
@@ -83,7 +84,7 @@ export default class Channel extends React.Component {
 }
 
 Channel.propTypes = {
+  user: PropTypes.object,
   socket: PropTypes.object,
-  channel: PropTypes.object,
-  username: PropTypes.string
+  channel: PropTypes.object
 }

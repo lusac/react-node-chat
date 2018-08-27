@@ -288,11 +288,29 @@ button.blue:hover {
   display: flex;
   color: #FFF;
   font-size: 18px;
-  background: red;
   font-weight: bold;
   align-items: center;
+  background: #c4b0b0;
   justify-content: center;
   border-radius: 50px 50px;
+}
+.message__photo.color1 {
+  background: #113377;
+}
+.message__photo.color2 {
+  background: #16f1b4;
+}
+.message__photo.color3 {
+  background: #fdd5cd;
+}
+.message__photo.color4 {
+  background: #efd19f;
+}
+.message__photo.color5 {
+  background: #dfe8f0;
+}
+.message__photo.color6 {
+  background: #f7e6fd;
 }
 .message__right {
   display: flex;

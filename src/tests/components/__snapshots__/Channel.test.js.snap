@@ -34,7 +34,7 @@ exports[`Channel component snapshot channel selected with msgs 1`] = `
           className="message__left"
         >
           <span
-            className="message__photo"
+            className="message__photo colorundefined"
           >
             X
           </span>

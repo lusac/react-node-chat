@@ -32,11 +32,30 @@
     display: flex;
     color: #FFF;
     font-size: 18px;
-    background: red;
     font-weight: bold;
     align-items: center;
+    background: #c4b0b0;
     justify-content: center;
     border-radius: 50px 50px;
+
+    &.color1 {
+      background: #113377;
+    }
+    &.color2 {
+      background: #16f1b4;
+    }
+    &.color3 {
+      background: #fdd5cd;
+    }
+    &.color4 {
+      background: #efd19f;
+    }
+    &.color5 {
+      background: #dfe8f0;
+    }
+    &.color6 {
+      background: #f7e6fd;
+    }
   }
 
   &__right {
