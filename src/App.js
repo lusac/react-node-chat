@@ -88,10 +88,19 @@ class App extends Component {
   renderChooseName() {
     if (!this.state.username) {
       return (
-        <form onSubmit={this.onUsernameSubmit.bind(this)}>
-          Escolha um nome de usuário:
-          <input type="text" value={this.draftUsername} onChange={this.onDraftUsernameChange.bind(this)}/>
-        </form>
+        <div className="form-choose-name" onSubmit={this.onUsernameSubmit.bind(this)}>
+          <div className="form-choose-name__content">
+            <form>
+              <label>Escolha um apelido</label>
+              <input
+                type="text"
+                value={this.draftUsername}
+                placeholder="ex: lucas.cruz"
+                onChange={this.onDraftUsernameChange.bind(this)} />
+              <button className="blue">entrar</button>
+            </form>
+          </div>
+        </div>
       )
     }
   }
