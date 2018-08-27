@@ -23,7 +23,7 @@ export default class NewChannelModal extends React.Component {
 
   onFormSubmit(e) {
     e.preventDefault()
-    if (this.state.channelName) {
+    if (this.state.channelName.length) {
       this.createChat(this.state.channelName)
       this.props.toggleModal()
     }
@@ -68,4 +68,4 @@ export default class NewChannelModal extends React.Component {
 NewChannelModal.propTypes = {
   socket: PropTypes.object,
   toggleModal: PropTypes.func
-};
+}

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewChannelModal component snapshot default 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal__container"
+  >
+    <div
+      className="modal__dialog"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <span
+          className="modal__close"
+          onClick={[Function]}
+        >
+          fechar
+        </span>
+        <h3>
+          Crie um canal
+        </h3>
+        <label>
+          nome
+        </label>
+        <input
+          onChange={[Function]}
+          placeholder="ex: canal da galera"
+          type="text"
+        />
+        <span
+          className="modal__dialog__btns"
+        >
+          <button
+            className="red"
+            onClick={[Function]}
+            type="button"
+          >
+            cancelar
+          </button>
+          <button
+            className="blue"
+            disabled={true}
+            type="submit"
+          >
+            salvar
+          </button>
+        </span>
+      </form>
+    </div>
+  </div>
+</div>
+`;
