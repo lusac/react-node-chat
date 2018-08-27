@@ -20,13 +20,10 @@ button {
     }
   }
 
-  &.red {
-    background: #dc3545;
-    border-color: 1px solid #dc3545;
-
+  &.red-transparent {
+    color: #dc3545;
     &:hover {
-      background: #c82333;
-      border-color: #bd2130;
+      color: #c82333;
     }
   }
 

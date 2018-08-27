@@ -37,7 +37,7 @@ export default class NewChannelModal extends React.Component {
             <form onSubmit={this.onFormSubmit.bind(this)}>
               <span
                 className="modal__close"
-                onClick={this.props.toggleModal.bind(this)}>fechar</span>
+                onClick={this.props.toggleModal.bind(this)}>✕</span>
 
               <h3>Crie um canal</h3>
 
@@ -49,7 +49,7 @@ export default class NewChannelModal extends React.Component {
 
               <span className="modal__dialog__btns">
                 <button
-                  className="red"
+                  className="red-transparent"
                   type="button"
                   onClick={this.props.toggleModal.bind(this)}>cancelar</button>
                 <button
