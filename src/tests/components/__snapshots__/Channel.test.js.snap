@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Channel component snapshot channel not selected 1`] = `
+<div
+  className="channel"
+>
+  <div
+    className="channel__empty-state"
+  >
+    <strong>
+      Escolha ou crie um canal para conversar com outras pessoas!
+    </strong>
+  </div>
+</div>
+`;
+
+exports[`Channel component snapshot channel selected with msgs 1`] = `
+<div
+  className="channel"
+>
+  <div
+    className="channel__content"
+  >
+    <div
+      className="channel__header"
+    />
+    <div
+      className="channel__section"
+    >
+      <div
+        className="message"
+      >
+        <strong
+          className="message__info"
+        >
+          <span>
+            xunda
+          </span>
+          <span
+            className="message__date"
+          >
+            10:07 AM
+          </span>
+        </strong>
+        <span
+          className="message__text"
+        >
+          hello!
+        </span>
+      </div>
+    </div>
+    <div
+      className="channel__footer"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          className="channel__chat-input"
+          onChange={[Function]}
+          placeholder="escreva uma mensagem"
+          value=""
+        />
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Channel component snapshot channel selected with no msgs 1`] = `
+<div
+  className="channel"
+>
+  <div
+    className="channel__content"
+  >
+    <div
+      className="channel__header"
+    />
+    <div
+      className="channel__section"
+    >
+      <span>
+        nenhuma mensagem
+      </span>
+    </div>
+    <div
+      className="channel__footer"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          className="channel__chat-input"
+          onChange={[Function]}
+          placeholder="escreva uma mensagem"
+          value=""
+        />
+      </form>
+    </div>
+  </div>
+</div>
+`;
