@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default class Message extends React.Component {
-  formatDate() {
-    let d = new Date(this.props.message.date)
+  formatDate(date) {
+    let d = new Date(date)
     return d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
   }
 

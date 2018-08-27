@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message component snapshot channel not selected 1`] = `
+<div
+  className="message"
+>
+  <strong
+    className="message__info"
+  >
+    <span>
+      xunda
+    </span>
+    <span
+      className="message__date"
+    >
+      10:18 AM
+    </span>
+  </strong>
+  <span
+    className="message__text"
+  >
+    hello!
+  </span>
+</div>
+`;
