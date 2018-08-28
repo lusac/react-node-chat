@@ -16,7 +16,8 @@ class App extends Component {
   }
 
   connectToSocket() {
-    var socket = socketIOClient(`//${document.location.hostname}:3001`)
+    const port = process.env.PORT || 3001
+    var socket = socketIOClient(`//${document.location.hostname}:${port}`)
 
     socket.on('connect', () => {
       // socket.emit('set username', this.state.username)
