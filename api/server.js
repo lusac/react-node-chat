@@ -14,7 +14,7 @@ if (process.env.IS_PROD) {
   app
     .use(express.static(path.join(__dirname, '../build')))
     .get('/', (req, res, next) =>
-      res.sendFile(path.join(__dirname, '..', 'build/index.html')))
+      res.sendFile(path.join(__dirname)))
 }
 
 function createChannel(name) {
