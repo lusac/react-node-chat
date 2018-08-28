@@ -12,9 +12,9 @@ const PORT = process.env.PORT || 3001
 
 if (process.env.IS_PROD) {
   app
-    .use(express.static(path.join(__dirname, '../build')))
+    .use(express.static(path.join(__dirname, 'build')))
     .get('/', (req, res, next) =>
-      res.sendFile(path.join(__dirname)))
+      res.sendFile(path.join(__dirname, 'build/index.html')))
 }
 
 function createChannel(name) {
