@@ -56,7 +56,7 @@ describe('ChannelList component', () => {
     })
   })
 
-  it('selectChat method', () => {
+  it('selectChannel method', () => {
     let
       socket = {
         emit: (a, b) => (a, b)
@@ -67,7 +67,7 @@ describe('ChannelList component', () => {
       wrapper = shallow(<ChannelList socket={socket} notifications={notifications} channel={channel} channels={channels} />)
 
     const spy = jest.spyOn(wrapper.instance().props.socket, 'emit')
-    wrapper.instance().selectChat(3)
+    wrapper.instance().selectChannel(3)
     expect(spy).toHaveBeenCalledWith('get channel', 3)
   })
 
