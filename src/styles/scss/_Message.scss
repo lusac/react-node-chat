@@ -2,7 +2,7 @@
   display: grid;
   padding: 18px 0;
   border-top: 2px dotted #CCC;
-  grid-template-columns: 55px auto;
+  grid-template-columns: 55px 1fr;
 
   &:last-child {
     border-top: none;

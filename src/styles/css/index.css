@@ -34,7 +34,6 @@ input:focus {
 .chat {
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 30px;
   grid-template-columns: 230px 1fr;
 }
 
@@ -164,7 +163,7 @@ button.blue:hover {
   display: grid;
   height: 100vh;
   background: #FFF;
-  grid-template-rows: 70px auto 70px;
+  grid-template-rows: 70px 1fr 70px;
 }
 .channel__header {
   display: flex;
@@ -204,7 +203,7 @@ button.blue:hover {
   display: grid;
   height: 100vh;
   background: #f2f2f2;
-  grid-template-rows: 70px auto;
+  grid-template-rows: 70px 1fr;
 }
 .channel-list__header {
   display: flex;
@@ -239,6 +238,11 @@ button.blue:hover {
   padding: 6px 18px;
   justify-content: space-between;
 }
+.channel-list__item__name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .channel-list__item:hover {
   background: #EFEFEF;
 }
@@ -267,7 +271,7 @@ button.blue:hover {
   display: grid;
   padding: 18px 0;
   border-top: 2px dotted #CCC;
-  grid-template-columns: 55px auto;
+  grid-template-columns: 55px 1fr;
 }
 .message:last-child {
   border-top: none;

@@ -2,7 +2,7 @@
   display: grid;
   height: 100vh;
   background: #f2f2f2;
-  grid-template-rows: 70px auto;
+  grid-template-rows: 70px 1fr;
 
   &__header {
     display: flex;
@@ -41,6 +41,12 @@
     cursor: pointer;
     padding: 6px 18px;
     justify-content: space-between;
+
+    &__name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
     &:hover {
       background: #EFEFEF;

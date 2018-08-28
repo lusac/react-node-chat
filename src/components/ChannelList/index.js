@@ -41,7 +41,7 @@ export default class ChannelList extends React.Component {
                 key={id}
                 className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
                 onClick={this.selectChannel.bind(this, id)}>
-                <span className="channel-list__name"># {this.props.channels[id].name}</span>
+                <span className="channel-list__item__name"># {this.props.channels[id].name}</span>
                 {!!this.props.notifications[id] &&
                   <span className="badge">{this.props.notifications[id]}</span>}
               </span>

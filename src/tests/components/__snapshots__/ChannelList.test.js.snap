@@ -67,7 +67,7 @@ exports[`ChannelList component snapshot with channels 1`] = `
       onClick={[Function]}
     >
       <span
-        className="channel-list__name"
+        className="channel-list__item__name"
       >
         # 
         channel 1
@@ -78,7 +78,7 @@ exports[`ChannelList component snapshot with channels 1`] = `
       onClick={[Function]}
     >
       <span
-        className="channel-list__name"
+        className="channel-list__item__name"
       >
         # 
         channel 2
@@ -89,7 +89,7 @@ exports[`ChannelList component snapshot with channels 1`] = `
       onClick={[Function]}
     >
       <span
-        className="channel-list__name"
+        className="channel-list__item__name"
       >
         # 
         channel 3
@@ -133,7 +133,7 @@ exports[`ChannelList component snapshot with notifications 1`] = `
       onClick={[Function]}
     >
       <span
-        className="channel-list__name"
+        className="channel-list__item__name"
       >
         # 
         channel 1
@@ -149,7 +149,7 @@ exports[`ChannelList component snapshot with notifications 1`] = `
       onClick={[Function]}
     >
       <span
-        className="channel-list__name"
+        className="channel-list__item__name"
       >
         # 
         channel 2
@@ -160,7 +160,7 @@ exports[`ChannelList component snapshot with notifications 1`] = `
       onClick={[Function]}
     >
       <span
-        className="channel-list__name"
+        className="channel-list__item__name"
       >
         # 
         channel 3

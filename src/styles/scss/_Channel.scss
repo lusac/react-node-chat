@@ -21,7 +21,7 @@
     display: grid;
     height: 100vh;
     background: #FFF;
-    grid-template-rows: 70px auto 70px;
+    grid-template-rows: 70px 1fr 70px;
   }
 
   &__header {
