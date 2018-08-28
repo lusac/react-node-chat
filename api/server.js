@@ -1,9 +1,21 @@
-/* global require */
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+/* global require process */
+const path = require('path');
+const express = require('express');
+const app = express()
+const server = require('http').createServer(app)
+const io = require('socket.io')(server);
+
 var uuidv4 = require('uuid/v4');
 var channels = {}
+
+const PORT = process.env.PORT || 3001
+
+if (process.env.IS_PROD) {
+  app
+    .use(express.static(path.join(__dirname, '../build')))
+    .get('/', (req, res, next) =>
+      res.sendFile(path.join(__dirname, '..', 'build/index.html')))
+}
 
 function createChannel(name) {
   return {
@@ -61,6 +73,6 @@ io.on('connection', function(socket) {
   });
 });
 
-http.listen(3001, function() {
-  console.log('listening on *:3001');
-});
+server.listen(PORT, () => {
+  console.log('Server started at port *:' + PORT)
+})
