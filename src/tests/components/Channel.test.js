@@ -150,4 +150,16 @@ describe('Channel component', () => {
     expect(spyEmit).toHaveBeenCalledWith('message', {"channelID": 1, "msg": {"color": 2, "date": new Date(), "text": "hello!", "username": 'xunda'}})
     expect(wrapper.instance().state.msg).toBe('')
   })
+
+  it('joinChannel method', () => {
+    let
+      socket = { emit: (a, b) => (a, b) },
+      user = {name: 'xunda', color: 2},
+      channel = { id: 1, name: 'channel 1', msgs: [] },
+      wrapper = shallow(<Channel user={user} socket={socket} channel={channel}/>)
+
+    const spy = jest.spyOn(wrapper.instance().props.socket, 'emit')
+    wrapper.instance().joinChannel()
+    expect(spy).toHaveBeenCalledWith('join channel', 1)
+  })
 })
