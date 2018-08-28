@@ -17,9 +17,21 @@ io.on('connection', function(socket) {
   console.log('user connected');
   io.emit('channels', channels);
 
+  socket.on('get channel', function(channelID) {
+    let channel = channels[channelID];
+    channel.joined = false;
+    if (socket.rooms[channelID]) {
+      channel.joined = true;
+    }
+    socket.emit('got channel', channel);
+    console.log('got spying channel: ' + channelID);
+  });
+
   socket.on('join channel', function(channelID) {
+    var channel = channels[channelID];
+    channel.joined = true;
     socket.join(channelID);
-    socket.emit('joined channel', channels[channelID]);
+    socket.emit('joined channel', channel);
     console.log('user connected to channel: ' + channelID);
   });
 
@@ -35,9 +47,11 @@ io.on('connection', function(socket) {
   });
 
   socket.on('message', function({channelID, msg} = {}) {
-    io.to(channelID).emit('message', {channelID, msg});
-    channels[channelID].msgs.push(msg);
-    console.log('message: ' + msg.text + ' from: ' + msg.username + ' to channel: ' + channelID);
+    if (socket.rooms[channelID]) {
+      io.to(channelID).emit('message', {channelID, msg});
+      channels[channelID].msgs.push(msg);
+      console.log('message: ' + msg.text + ' from: ' + msg.username + ' to channel: ' + channelID);
+    }
   });
 
   // socket.on('set username', function(nickname) {

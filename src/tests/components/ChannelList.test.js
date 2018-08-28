@@ -68,7 +68,7 @@ describe('ChannelList component', () => {
 
     const spy = jest.spyOn(wrapper.instance().props.socket, 'emit')
     wrapper.instance().selectChat(3)
-    expect(spy).toHaveBeenCalledWith('join channel', 3)
+    expect(spy).toHaveBeenCalledWith('get channel', 3)
   })
 
   it('toggleModal method', () => {

@@ -17,7 +17,7 @@ exports[`NewChannelModal component snapshot default 1`] = `
           className="modal__close"
           onClick={[Function]}
         >
-          fechar
+          ✕
         </span>
         <h3>
           Crie um canal
@@ -34,7 +34,7 @@ exports[`NewChannelModal component snapshot default 1`] = `
           className="modal__dialog__btns"
         >
           <button
-            className="red"
+            className="red-transparent"
             onClick={[Function]}
             type="button"
           >

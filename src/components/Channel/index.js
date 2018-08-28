@@ -33,6 +33,10 @@ export default class Channel extends React.Component {
     })
   }
 
+  joinChannel() {
+    this.props.socket.emit('join channel', this.props.channel.id)
+  }
+
   renderEmptyState() {
     if (!this.props.channel.id) {
       return (
@@ -60,13 +64,22 @@ export default class Channel extends React.Component {
           </div>
 
           <div className="channel__footer">
-            <form onSubmit={this.onMsgSubmit.bind(this)}>
-              <input
-                placeholder="escreva uma mensagem"
-                className="channel__chat-input"
-                value={this.state.msg}
-                onChange={this.onMsgChange.bind(this)} />
-            </form>
+            {this.props.channel.joined &&
+              <form onSubmit={this.onMsgSubmit.bind(this)}>
+                <input
+                  placeholder="escreva uma mensagem"
+                  className="channel__chat-input"
+                  value={this.state.msg}
+                  onChange={this.onMsgChange.bind(this)} />
+              </form>
+            }
+
+            {!this.props.channel.joined &&
+              <button
+                className="blue"
+                onClick={this.joinChannel.bind(this)}>
+                Entrar no canal</button>
+            }
           </div>
         </div>
       )

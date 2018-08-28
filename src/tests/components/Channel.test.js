@@ -17,6 +17,22 @@ describe('Channel component', () => {
       expect(renderedValue).toMatchSnapshot()
     })
 
+    it('channel already joined', () => {
+      const
+        channel = { id: 1, msgs: [], joined: true },
+        username = 'xunda',
+        renderedValue =  renderer.create(<Channel channel={channel} username={username} />).toJSON()
+      expect(renderedValue).toMatchSnapshot()
+    })
+
+    it('channel not joined', () => {
+      const
+        channel = { id: 1, msgs: [], joined: false },
+        username = 'xunda',
+        renderedValue =  renderer.create(<Channel channel={channel} username={username} />).toJSON()
+      expect(renderedValue).toMatchSnapshot()
+    })
+
     it('channel selected with no msgs', () => {
       const
         channel = { id: 1, msgs: [] },
@@ -68,6 +84,32 @@ describe('Channel component', () => {
 
       it('correct label', () => {
         expect(wrapper.find('Message').length).toBe(1)
+      })
+    })
+
+    describe('channel already joined', () => {
+      let wrapper, channel = { id: 1, joined: true, name: 'channel 1', msgs: [{text:'hello!', username: 'xunda', date: new Date('Mon Aug 27 2018 11:22:33')}] }
+
+      beforeEach(() => {
+        wrapper = shallow(<Channel channel={channel}/>)
+      })
+
+      it('has input and dont have button to join', () => {
+        expect(wrapper.find('.channel__chat-input').length).toBe(1)
+        expect(wrapper.find('.channel__footer button').length).toBe(0)
+      })
+    })
+
+    describe('channel not joined', () => {
+      let wrapper, channel = { id: 1, joined: false, name: 'channel 1', msgs: [{text:'hello!', username: 'xunda', date: new Date('Mon Aug 27 2018 11:22:33')}] }
+
+      beforeEach(() => {
+        wrapper = shallow(<Channel channel={channel}/>)
+      })
+
+      it('has input and dont have button to join', () => {
+        expect(wrapper.find('.channel__chat-input').length).toBe(0)
+        expect(wrapper.find('.channel__footer button').length).toBe(1)
       })
     })
   })

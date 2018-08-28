@@ -11,7 +11,7 @@ export default class ChannelList extends React.Component {
   }
 
   selectChat(id) {
-    this.props.socket.emit('join channel', id)
+    this.props.socket.emit('get channel', id)
   }
 
   toggleModal() {

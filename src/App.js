@@ -28,6 +28,12 @@ class App extends Component {
       })
     })
 
+    socket.on('got channel', (channel) => {
+      this.setState({
+        channel: channel
+      })
+    })
+
     socket.on('joined channel', (channel) => {
       this.setState({
         channel: channel,
