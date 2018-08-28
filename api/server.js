@@ -43,6 +43,12 @@ io.on('connection', function(socket) {
     let channel = createChannel(name);
     channels[channel.id] = channel;
     io.emit('channels', channels);
+
+    // inclui usuário no channel
+    channel.joined = true;
+    socket.join(channel.id);
+    socket.emit('joined channel', channel);
+
     console.log('criando channel ' + name);
   });
 
@@ -53,11 +59,6 @@ io.on('connection', function(socket) {
       console.log('message: ' + msg.text + ' from: ' + msg.username + ' to channel: ' + channelID);
     }
   });
-
-  // socket.on('set username', function(nickname) {
-  //   socket.nickname = nickname;
-  //   console.log('settings username: ' + nickname);
-  // });
 });
 
 http.listen(3001, function() {
