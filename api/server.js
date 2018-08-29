@@ -1,95 +1,41 @@
-/* global require process */
-const path = require('path');
-const express = require('express');
+/* global require process __dirname */
+const path = require('path')
+const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
-const io = require('socket.io')(server);
-
-var uuidv4 = require('uuid/v4');
-var channels = {}
+const io = require('socket.io')(server)
+const channelManager = require('./channel')()
 
 const PORT = process.env.PORT || 3001
 
 if (process.env.IS_PROD) {
   app
     .use(express.static(path.join(__dirname, '../build')))
-    .get('/', (req, res, next) =>
+    .get('/', (_, res) =>
       res.sendFile(path.join(__dirname, '..', 'build/index.html')))
 }
 
-function createChannel(name) {
-  return {
-    id: uuidv4(),
-    name: name,
-    msgs: []
-  }
-}
+io.on('connection', socket => {
+  console.log('user connected')
 
-io.on('connection', function(socket) {
-  console.log('user connected');
-  io.emit('channels', channels);
+  io.emit('channels', channelManager.channels)
 
-  socket.on('get channel', function(channelID) {
-    let channel = channels[channelID];
-    channel.joined = false;
-    if (socket.rooms[channelID]) {
-      channel.joined = true;
-    }
-    socket.emit('got channel', channel);
-    console.log('got spying channel: ' + channelID);
-  });
+  socket.on('get channel', channelManager.getChannel.bind(this, socket))
 
-  socket.on('leave channel', function({channelID, msg} = {}) {
-    let channel = channels[channelID];
-    channel.joined = false;
-    io.to(channelID).emit('message', {
-      channelID, msg: msg
-    });
-    socket.leave(channelID);
-    channels[channelID].msgs.push(msg);
-    channel.msgs = channels[channelID].msgs
-    socket.emit('leaved channel', channel);
-    console.log('user leaved channel: ' + channelID);
-  });
+  socket.on('leave channel', channelManager.leaveChannel.bind(this, socket, io))
 
-  socket.on('join channel', function({channelID, msg} = {}) {
-    let channel = channels[channelID];
-    channel.joined = true;
-    socket.join(channelID);
-    socket.emit('joined channel', channel);
-    io.to(channelID).emit('message', {
-      channelID, msg: msg
-    });
-    channels[channelID].msgs.push(msg);
-    console.log('user connected to channel: ' + channelID);
-  });
+  socket.on('join channel', channelManager.joinChannel.bind(this, socket, io))
 
-  socket.on('disconnect', function() {
-    console.log('user disconnected');
-  });
+  socket.on('create channel', channelManager.createChannel.bind(this, socket, io))
 
-  socket.on('create channel', function(name) {
-    let channel = createChannel(name);
-    channels[channel.id] = channel;
-    io.emit('channels', channels);
+  socket.on('message', channelManager.sendMessage.bind(this, socket, io))
 
-    // inclui usuário no channel
-    channel.joined = true;
-    socket.join(channel.id);
-    socket.emit('joined channel', channel);
-
-    console.log('criando channel ' + name);
-  });
-
-  socket.on('message', function({channelID, msg} = {}) {
-    if (socket.rooms[channelID]) {
-      io.to(channelID).emit('message', {channelID, msg});
-      channels[channelID].msgs.push(msg);
-      console.log('message: ' + msg.text + ' from: ' + msg.username + ' to channel: ' + channelID);
-    }
-  });
-});
+  // socket.on('disconnect', () => {
+  //   console.log('user disconnected')
+  // })
+})
 
 server.listen(PORT, () => {
-  console.log('Server started at port *:' + PORT)
+  console.log('* Client started at port *:3000')
+  console.log(`* Server started at port *:${PORT}`)
 })
