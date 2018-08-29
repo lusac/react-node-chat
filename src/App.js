@@ -9,7 +9,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: {},
+      user: {
+        channels: []
+      },
       channels: {},
       channel: {},
       notifications: {}
@@ -20,9 +22,7 @@ class App extends Component {
     const host = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     let socket = socketIOClient(host)
 
-    socket.on('connect', () => {
-      // socket.emit('set username', this.state.username)
-    });
+    // socket.on('connect', () => {});
 
     socket.on('channels', (channels) => {
       this.setState({
@@ -39,6 +39,13 @@ class App extends Component {
     socket.on('joined channel', (channel) => {
       this.setState({
         channel: channel,
+        user: {
+          ...this.state.user,
+          channels: [
+            ...this.state.user.channels,
+            channel.id
+          ]
+        },
         notifications: {
           ...this.state.notifications,
           [channel.id]: 0
@@ -84,6 +91,7 @@ class App extends Component {
     e.preventDefault()
     this.setState({
       user: {
+        ...this.state.user,
         name: this.draftUsername,
         color: Math.floor((Math.random() * 6) + 1)
       }
@@ -121,7 +129,7 @@ class App extends Component {
       return (
         <div className="chat">
           <ChannelList
-            username={this.state.user.name}
+            user={this.state.user}
             channel={this.state.channel}
             channels={this.state.channels}
             socket={this.state.socket}

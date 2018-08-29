@@ -20,11 +20,23 @@ export default class ChannelList extends React.Component {
     })
   }
 
+  getNotJoinedChannelsIDs() {
+    return Object.keys(this.props.channels).filter(id =>
+      this.props.user.channels.indexOf(id) === -1
+    )
+  }
+
+  getJoinedChannelsIDs() {
+    return this.props.user.channels.filter(id =>
+      this.props.channels[id].id
+    )
+  }
+
   render() {
     return (
       <div className="channel-list">
         <div className="channel-list__header">
-          Olá <strong className="channel-list__header__name">{this.props.username}</strong>!
+          Olá <strong className="channel-list__header__name">{this.props.user.username}</strong>!
         </div>
 
         <div className="channel-list__section">
@@ -35,18 +47,39 @@ export default class ChannelList extends React.Component {
               onClick={this.toggleModal.bind(this)}>+</span>
           </div>
 
-          {Object.keys(this.props.channels).map(id => {
-            return (
-              <span
-                key={id}
-                className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
-                onClick={this.selectChannel.bind(this, id)}>
-                <span className="channel-list__item__name"># {this.props.channels[id].name}</span>
-                {!!this.props.notifications[id] &&
-                  <span className="badge">{this.props.notifications[id]}</span>}
-              </span>
-            )
-          })}
+          <ul>
+            {this.getNotJoinedChannelsIDs().map(id => {
+              return (
+                <li
+                  key={id}
+                  className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
+                  onClick={this.selectChannel.bind(this, id)}>
+                  <span className="channel-list__item__name"># {this.props.channels[id].name}</span>
+                  {!!this.props.notifications[id] &&
+                    <span className="badge">{this.props.notifications[id]}</span>}
+                </li>
+              )
+            })}
+          </ul>
+
+          <div className="channel-list__section__title">
+            <span>Participando</span>
+          </div>
+
+          <ul>
+            {this.getJoinedChannelsIDs().map(id => {
+              return (
+                <li
+                  key={id}
+                  className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
+                  onClick={this.selectChannel.bind(this, id)}>
+                  <span className="channel-list__item__name"># {this.props.channels[id].name}</span>
+                  {!!this.props.notifications[id] &&
+                    <span className="badge">{this.props.notifications[id]}</span>}
+                </li>
+              )
+            })}
+          </ul>
         </div>
 
         {this.state.showModal &&
@@ -62,7 +95,7 @@ export default class ChannelList extends React.Component {
 ChannelList.propTypes = {
   socket: PropTypes.object,
   channel: PropTypes.object,
-  username: PropTypes.string,
+  user: PropTypes.object,
   channels: PropTypes.object,
   notifications: PropTypes.object
 };
