@@ -1,7 +1,7 @@
 React Node Chat
 ==========
 
-Realtime chat desenvolvido com Reactjs e Nodejs.
+Realtime chat desenvolvido com Reactjs, Nodejs e Socket.io.
 
 Features
 ==========
@@ -14,6 +14,7 @@ Features
 - [x] Enviar e receber mensagens dentro do Channel
 - [x] Exibir histórico do Channel antes de dar Join
 - [x] Notificação na listagem de Channel quando receber mensagem em um Channel não ativo
+- [ ] Apagar Channel
 - [ ] Persistir Channel e Usuários em um database
 - [ ] Mostrar usuários do Channel
 - [ ] Mostrar usuários online do Channel
@@ -34,9 +35,12 @@ Developer
 
 ### Server Start
 
-Rodando client e nodejs pra simplificar o desenvolvimento
+Rodando client e nodejs na mesma task pra simplificar o desenvolvimento
 
 `yarn start`
+
+Client -> `localhost:3000`
+Websocket -> `localhost:3001`
 
 ### Test
 
