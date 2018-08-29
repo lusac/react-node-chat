@@ -40,13 +40,13 @@ export default class ChannelList extends React.Component {
         </div>
 
         <div className="channel-list__section">
-          {this.props.user.channels.length !== 0 &&
+          {!!this.props.user.channels.length &&
             <div className="channel-list__section__title">
               <span>Participando</span>
             </div>
           }
 
-          {this.props.user.channels.length !== 0 &&
+          {!!this.props.user.channels.length &&
             <ul>
               {this.getJoinedChannelsIDs().map(id => {
                 return (
