@@ -36,10 +36,33 @@ export default class ChannelList extends React.Component {
     return (
       <div className="channel-list">
         <div className="channel-list__header">
-          Olá <strong className="channel-list__header__name">{this.props.user.username}</strong>!
+          Olá <strong className="channel-list__header__name">{this.props.user.name}</strong>!
         </div>
 
         <div className="channel-list__section">
+          {this.props.user.channels.length !== 0 &&
+            <div className="channel-list__section__title">
+              <span>Participando</span>
+            </div>
+          }
+
+          {this.props.user.channels.length !== 0 &&
+            <ul>
+              {this.getJoinedChannelsIDs().map(id => {
+                return (
+                  <li
+                    key={id}
+                    className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
+                    onClick={this.selectChannel.bind(this, id)}>
+                    <span className="channel-list__item__name"># {this.props.channels[id].name}</span>
+                    {!!this.props.notifications[id] &&
+                      <span className="badge">{this.props.notifications[id]}</span>}
+                  </li>
+                )
+              })}
+            </ul>
+          }
+
           <div className="channel-list__section__title">
             <span>Canais</span>
             <span
@@ -49,25 +72,6 @@ export default class ChannelList extends React.Component {
 
           <ul>
             {this.getNotJoinedChannelsIDs().map(id => {
-              return (
-                <li
-                  key={id}
-                  className={"channel-list__item " + (this.props.channel.id === id ? 'selected' : '')}
-                  onClick={this.selectChannel.bind(this, id)}>
-                  <span className="channel-list__item__name"># {this.props.channels[id].name}</span>
-                  {!!this.props.notifications[id] &&
-                    <span className="badge">{this.props.notifications[id]}</span>}
-                </li>
-              )
-            })}
-          </ul>
-
-          <div className="channel-list__section__title">
-            <span>Participando</span>
-          </div>
-
-          <ul>
-            {this.getJoinedChannelsIDs().map(id => {
               return (
                 <li
                   key={id}
