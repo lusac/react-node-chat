@@ -37,6 +37,22 @@ class App extends Component {
       })
     })
 
+    socket.on('leaved channel', (channel) => {
+      this.setState({
+        channel: channel,
+        user: {
+          ...this.state.user,
+          channels: this.state.user.channels.filter((id) => {
+            return id !== channel.id
+          })
+        },
+        notifications: {
+          ...this.state.notifications,
+          [channel.id]: 0
+        }
+      })
+    })
+
     socket.on('joined channel', (channel) => {
       this.setState({
         channel: channel,

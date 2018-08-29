@@ -33,6 +33,19 @@ export default class Channel extends React.Component {
     })
   }
 
+  leaveChannel() {
+    this.props.socket.emit('leave channel', {
+      channelID: this.props.channel.id,
+      msg: {
+        type: 'auto',
+        date: new Date(),
+        text: `${this.props.user.name} saiu do canal`,
+        color: this.props.user.color,
+        username: this.props.user.name
+      }
+    })
+  }
+
   joinChannel() {
     this.props.socket.emit('join channel', {
       channelID: this.props.channel.id,
@@ -62,6 +75,9 @@ export default class Channel extends React.Component {
         <div className="channel__content">
           <div className="channel__header">
             {this.props.channel.name}
+            {this.props.channel.joined &&
+              <button onClick={this.leaveChannel.bind(this)} className="red">Sair</button>
+            }
           </div>
 
           <div className="channel__section">

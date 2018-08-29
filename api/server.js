@@ -39,6 +39,19 @@ io.on('connection', function(socket) {
     console.log('got spying channel: ' + channelID);
   });
 
+  socket.on('leave channel', function({channelID, msg} = {}) {
+    let channel = channels[channelID];
+    channel.joined = false;
+    io.to(channelID).emit('message', {
+      channelID, msg: msg
+    });
+    socket.leave(channelID);
+    channels[channelID].msgs.push(msg);
+    channel.msgs = channels[channelID].msgs
+    socket.emit('leaved channel', channel);
+    console.log('user leaved channel: ' + channelID);
+  });
+
   socket.on('join channel', function({channelID, msg} = {}) {
     let channel = channels[channelID];
     channel.joined = true;

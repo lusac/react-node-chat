@@ -9,7 +9,14 @@ exports[`Channel component snapshot channel already joined 1`] = `
   >
     <div
       className="channel__header"
-    />
+    >
+      <button
+        className="red"
+        onClick={[Function]}
+      >
+        Sair
+      </button>
+    </div>
     <div
       className="channel__section"
     >

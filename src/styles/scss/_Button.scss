@@ -19,6 +19,15 @@ button {
     }
   }
 
+  &.red {
+    color: #FFF;
+    background: #dc3545;
+
+    &:hover {
+      background: #c82333;
+    }
+  }
+
   &.red-transparent {
     color: #dc3545;
     &:hover {
@@ -28,11 +37,9 @@ button {
 
   &.blue {
     background: #007bff;
-    border: 1px solid #007bff;
 
     &:hover {
       background: #0069d9;
-      border-color: #0062cc;
     }
   }
 }
