@@ -4,6 +4,12 @@
   border-top: 2px dotted #CCC;
   grid-template-columns: 55px 1fr;
 
+  &--auto {
+    .message__text {
+      color: #999;
+      font-style: italic;
+    }
+  }
   &:last-child {
     border-top: none;
   }

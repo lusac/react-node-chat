@@ -39,11 +39,15 @@ io.on('connection', function(socket) {
     console.log('got spying channel: ' + channelID);
   });
 
-  socket.on('join channel', function(channelID) {
-    var channel = channels[channelID];
+  socket.on('join channel', function({channelID, msg} = {}) {
+    let channel = channels[channelID];
     channel.joined = true;
     socket.join(channelID);
     socket.emit('joined channel', channel);
+    io.to(channelID).emit('message', {
+      channelID, msg: msg
+    });
+    channels[channelID].msgs.push(msg);
     console.log('user connected to channel: ' + channelID);
   });
 

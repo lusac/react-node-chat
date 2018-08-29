@@ -34,7 +34,16 @@ export default class Channel extends React.Component {
   }
 
   joinChannel() {
-    this.props.socket.emit('join channel', this.props.channel.id)
+    this.props.socket.emit('join channel', {
+      channelID: this.props.channel.id,
+      msg: {
+        type: 'auto',
+        date: new Date(),
+        text: `${this.props.user.name} entrou no canal`,
+        color: this.props.user.color,
+        username: this.props.user.name
+      }
+    })
   }
 
   renderEmptyState() {
@@ -56,9 +65,11 @@ export default class Channel extends React.Component {
           </div>
 
           <div className="channel__section">
+            {/* percorre de tras pra frente */}
             {this.props.channel.msgs.map((msg, i) =>
               <Message key={i} message={this.props.channel.msgs[this.props.channel.msgs.length-1-i]} />
             )}
+
             {!this.props.channel.msgs.length &&
               <span>nenhuma mensagem</span>}
           </div>
