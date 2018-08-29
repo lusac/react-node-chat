@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './styles/css/index.css'
 import Channel from './components/Channel'
 import ChannelList from './components/ChannelList'
+import { Header } from './components/Header'
 import socketIOClient from 'socket.io-client'
 
 class App extends Component {
@@ -127,17 +128,21 @@ class App extends Component {
   renderChat() {
     if (this.state.user.name) {
       return (
-        <div className="chat">
-          <ChannelList
-            user={this.state.user}
-            channel={this.state.channel}
-            channels={this.state.channels}
-            socket={this.state.socket}
-            notifications={this.state.notifications} />
-          <Channel
-            user={this.state.user}
-            channel={this.state.channel}
-            socket={this.state.socket}  />
+        <div>
+          <Header />
+          <input type="checkbox" id="toggleChannelList"></input>
+          <div className="chat">
+            <ChannelList
+              user={this.state.user}
+              channel={this.state.channel}
+              channels={this.state.channels}
+              socket={this.state.socket}
+              notifications={this.state.notifications} />
+            <Channel
+              user={this.state.user}
+              channel={this.state.channel}
+              socket={this.state.socket}  />
+          </div>
         </div>
       )
     }

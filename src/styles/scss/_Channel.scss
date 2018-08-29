@@ -2,11 +2,15 @@
   box-shadow: 0px 0px 0px 1px #e1e1e1;
 
   &__empty-state {
-    height: 100vh;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
+    height: calc(100vh - 59px);
+
+    @include medium-up {
+      height: 100vh;
+    }
 
     strong {
       width: 50%;
@@ -19,9 +23,13 @@
 
   &__content {
     display: grid;
-    height: 100vh;
     background: #FFF;
+    height: calc(100vh - 59px);
     grid-template-rows: 70px 1fr 70px;
+
+    @include medium-up {
+      height: 100vh;
+    }
   }
 
   &__header {

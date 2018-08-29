@@ -1,0 +1,29 @@
+.header {
+  height: 59px;
+  padding: 10px;
+  position: relative;
+  background: #314048;
+  box-shadow: 0 0 0 1px #314048;
+
+  @include medium-up {
+    display: none;
+  }
+}
+
+.burguer {
+  span {
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
+    display: block;
+    background-color: #FFF;
+  }
+}
+
+#toggleChannelList {
+  display: none;
+
+  &:checked ~ .chat {
+    grid-template-columns: 230px 1fr;
+  }
+}

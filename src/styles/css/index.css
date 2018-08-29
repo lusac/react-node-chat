@@ -32,9 +32,15 @@ input:focus {
 }
 
 .chat {
-  height: 100vh;
+  height: calc(100vh - 59px);
   display: grid;
-  grid-template-columns: 230px 1fr;
+  transition: all 1s;
+  grid-template-columns: 0 1fr;
+}
+@media (min-width: 768px) {
+  .chat {
+    grid-template-columns: 230px 1fr;
+  }
 }
 
 .badge {
@@ -47,6 +53,34 @@ input:focus {
   border-radius: 50px;
   font-weight: bolder;
   background: #f93d3d;
+}
+
+.header {
+  height: 59px;
+  padding: 10px;
+  position: relative;
+  background: #314048;
+  box-shadow: 0 0 0 1px #314048;
+}
+@media (min-width: 768px) {
+  .header {
+    display: none;
+  }
+}
+
+.burguer span {
+  width: 35px;
+  height: 5px;
+  margin: 6px 0;
+  display: block;
+  background-color: #FFF;
+}
+
+#toggleChannelList {
+  display: none;
+}
+#toggleChannelList:checked ~ .chat {
+  grid-template-columns: 230px 1fr;
 }
 
 button {
@@ -146,11 +180,16 @@ button.blue:hover {
   box-shadow: 0px 0px 0px 1px #e1e1e1;
 }
 .channel__empty-state {
-  height: 100vh;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
+  height: calc(100vh - 59px);
+}
+@media (min-width: 768px) {
+  .channel__empty-state {
+    height: 100vh;
+  }
 }
 .channel__empty-state strong {
   width: 50%;
@@ -161,9 +200,14 @@ button.blue:hover {
 }
 .channel__content {
   display: grid;
-  height: 100vh;
   background: #FFF;
+  height: calc(100vh - 59px);
   grid-template-rows: 70px 1fr 70px;
+}
+@media (min-width: 768px) {
+  .channel__content {
+    height: 100vh;
+  }
 }
 .channel__header {
   display: flex;
@@ -201,9 +245,15 @@ button.blue:hover {
 
 .channel-list {
   display: grid;
-  height: 100vh;
+  overflow: hidden;
   background: #f2f2f2;
   grid-template-rows: 70px 1fr;
+  height: calc(height: 100vh - 59px);
+}
+@media (min-width: 768px) {
+  .channel-list {
+    height: 100vh;
+  }
 }
 .channel-list__header {
   display: flex;
@@ -329,8 +379,8 @@ button.blue:hover {
 
 .form-choose-name {
   width: 100vw;
-  height: 100vh;
   display: flex;
+  height: 100vh;
   align-items: center;
   background: #f2f2f2;
   justify-content: center;

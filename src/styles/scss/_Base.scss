@@ -33,9 +33,14 @@ input {
 }
 
 .chat {
-  height: 100vh;
+  height: calc(100vh - 59px);;
   display: grid;
-  grid-template-columns: 230px 1fr;
+  transition: all 1s;
+  grid-template-columns: 0 1fr;
+
+  @include medium-up {
+    grid-template-columns: 230px 1fr;
+  }
 }
 
 .badge {
