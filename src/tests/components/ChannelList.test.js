@@ -10,16 +10,20 @@ configure({ adapter: new Adapter() })
 describe('ChannelList component', () => {
   describe('snapshot', () => {
     it('empty list', () => {
-      const channels = {}
-      const renderedValue =  renderer.create(<ChannelList channels={channels} />).toJSON()
+      const
+        channels = {},
+        user = {name: 'xunda', channels:[]},
+        renderedValue =  renderer.create(<ChannelList user={user} channels={channels} />).toJSON()
       expect(renderedValue).toMatchSnapshot()
     })
 
     it('with channels', () => {
-      const notifications = {}
-      const channel = {id:2, name:'channel 2'}
-      const channels = { 1:{id:1, name:'channel 1'}, 2:{id:2, name:'channel 2'}, 3:{id:3, name:'channel 3'}}
-      const renderedValue =  renderer.create(<ChannelList notifications={notifications} channel={channel} channels={channels} />).toJSON()
+      const
+        notifications = {},
+        channel = {id:2, name:'channel 2'},
+        channels = { 1:{id:1, name:'channel 1'}, 2:{id:2, name:'channel 2'}, 3:{id:3, name:'channel 3'}},
+        user = {name: 'xunda', channels:[]},
+        renderedValue =  renderer.create(<ChannelList user={user} notifications={notifications} channel={channel} channels={channels} />).toJSON()
       expect(renderedValue).toMatchSnapshot()
     })
 
@@ -28,7 +32,8 @@ describe('ChannelList component', () => {
         notifications = {1: 3, 2: 0, 3: 10},
         channel = {id:2, name:'channel 2'},
         channels = { 1:{id:1, name:'channel 1'}, 2:{id:2, name:'channel 2'}, 3:{id:3, name:'channel 3'}},
-        renderedValue =  renderer.create(<ChannelList notifications={notifications} channel={channel} channels={channels} />).toJSON()
+        user = {name: 'xunda', channels:[]},
+        renderedValue =  renderer.create(<ChannelList user={user} notifications={notifications} channel={channel} channels={channels} />).toJSON()
       expect(renderedValue).toMatchSnapshot()
     })
   })
@@ -38,10 +43,11 @@ describe('ChannelList component', () => {
     const
       notifications = {1: 3, 2: 0, 3: 10},
       channel = {id:2, name:'channel 2'},
-      channels = { 1:{id:1, name:'channel 1'}, 2:{id:2, name:'channel 2'}, 3:{id:3, name:'channel 3'}}
+      channels = { 1:{id:1, name:'channel 1'}, 2:{id:2, name:'channel 2'}, 3:{id:3, name:'channel 3'}},
+      user = {name: 'xunda', channels:[]}
 
     beforeEach(() => {
-      wrapper = shallow(<ChannelList notifications={notifications} channel={channel} channels={channels} />)
+      wrapper = shallow(<ChannelList user={user} notifications={notifications} channel={channel} channels={channels} />)
     })
 
     it('correct label', () => {
@@ -64,7 +70,8 @@ describe('ChannelList component', () => {
       notifications = {1: 3, 2: 0, 3: 10},
       channel = {id:2, name:'channel 2'},
       channels = { 1:{id:1, name:'channel 1'}, 2:{id:2, name:'channel 2'}, 3:{id:3, name:'channel 3'}},
-      wrapper = shallow(<ChannelList socket={socket} notifications={notifications} channel={channel} channels={channels} />)
+      user = {name: 'xunda', channels:[]},
+      wrapper = shallow(<ChannelList user={user} socket={socket} notifications={notifications} channel={channel} channels={channels} />)
 
     const spy = jest.spyOn(wrapper.instance().props.socket, 'emit')
     wrapper.instance().selectChannel(3)
@@ -76,7 +83,8 @@ describe('ChannelList component', () => {
       notifications = {1: 3, 2: 0, 3: 10},
       channel = {id:2, name:'channel 2'},
       channels = { 1:{id:1, name:'channel 1'}, 2:{id:2, name:'channel 2'}, 3:{id:3, name:'channel 3'}},
-      wrapper = shallow(<ChannelList notifications={notifications} channel={channel} channels={channels} />)
+      user = {name: 'xunda', channels:[]},
+      wrapper = shallow(<ChannelList user={user} notifications={notifications} channel={channel} channels={channels} />)
 
     expect(wrapper.instance().state.showModal).toBeFalsy()
     wrapper.instance().toggleModal()

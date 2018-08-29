@@ -10,7 +10,9 @@ exports[`ChannelList component snapshot empty list 1`] = `
     Olá 
     <strong
       className="channel-list__header__name"
-    />
+    >
+      xunda
+    </strong>
     !
   </div>
   <div
@@ -29,6 +31,7 @@ exports[`ChannelList component snapshot empty list 1`] = `
         +
       </span>
     </div>
+    <ul />
   </div>
 </div>
 `;
@@ -43,7 +46,9 @@ exports[`ChannelList component snapshot with channels 1`] = `
     Olá 
     <strong
       className="channel-list__header__name"
-    />
+    >
+      xunda
+    </strong>
     !
   </div>
   <div
@@ -62,39 +67,41 @@ exports[`ChannelList component snapshot with channels 1`] = `
         +
       </span>
     </div>
-    <span
-      className="channel-list__item "
-      onClick={[Function]}
-    >
-      <span
-        className="channel-list__item__name"
+    <ul>
+      <li
+        className="channel-list__item "
+        onClick={[Function]}
       >
-        # 
-        channel 1
-      </span>
-    </span>
-    <span
-      className="channel-list__item "
-      onClick={[Function]}
-    >
-      <span
-        className="channel-list__item__name"
+        <span
+          className="channel-list__item__name"
+        >
+          # 
+          channel 1
+        </span>
+      </li>
+      <li
+        className="channel-list__item "
+        onClick={[Function]}
       >
-        # 
-        channel 2
-      </span>
-    </span>
-    <span
-      className="channel-list__item "
-      onClick={[Function]}
-    >
-      <span
-        className="channel-list__item__name"
+        <span
+          className="channel-list__item__name"
+        >
+          # 
+          channel 2
+        </span>
+      </li>
+      <li
+        className="channel-list__item "
+        onClick={[Function]}
       >
-        # 
-        channel 3
-      </span>
-    </span>
+        <span
+          className="channel-list__item__name"
+        >
+          # 
+          channel 3
+        </span>
+      </li>
+    </ul>
   </div>
 </div>
 `;
@@ -109,7 +116,9 @@ exports[`ChannelList component snapshot with notifications 1`] = `
     Olá 
     <strong
       className="channel-list__header__name"
-    />
+    >
+      xunda
+    </strong>
     !
   </div>
   <div
@@ -128,49 +137,51 @@ exports[`ChannelList component snapshot with notifications 1`] = `
         +
       </span>
     </div>
-    <span
-      className="channel-list__item "
-      onClick={[Function]}
-    >
-      <span
-        className="channel-list__item__name"
+    <ul>
+      <li
+        className="channel-list__item "
+        onClick={[Function]}
       >
-        # 
-        channel 1
-      </span>
-      <span
-        className="badge"
+        <span
+          className="channel-list__item__name"
+        >
+          # 
+          channel 1
+        </span>
+        <span
+          className="badge"
+        >
+          3
+        </span>
+      </li>
+      <li
+        className="channel-list__item "
+        onClick={[Function]}
       >
-        3
-      </span>
-    </span>
-    <span
-      className="channel-list__item "
-      onClick={[Function]}
-    >
-      <span
-        className="channel-list__item__name"
+        <span
+          className="channel-list__item__name"
+        >
+          # 
+          channel 2
+        </span>
+      </li>
+      <li
+        className="channel-list__item "
+        onClick={[Function]}
       >
-        # 
-        channel 2
-      </span>
-    </span>
-    <span
-      className="channel-list__item "
-      onClick={[Function]}
-    >
-      <span
-        className="channel-list__item__name"
-      >
-        # 
-        channel 3
-      </span>
-      <span
-        className="badge"
-      >
-        10
-      </span>
-    </span>
+        <span
+          className="channel-list__item__name"
+        >
+          # 
+          channel 3
+        </span>
+        <span
+          className="badge"
+        >
+          10
+        </span>
+      </li>
+    </ul>
   </div>
 </div>
 `;

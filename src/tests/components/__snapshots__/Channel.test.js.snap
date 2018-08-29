@@ -18,7 +18,7 @@ exports[`Channel component snapshot channel already joined 1`] = `
       </span>
     </div>
     <div
-      className="channel__footer"
+      className="channel__footer "
     >
       <form
         onSubmit={[Function]}
@@ -53,7 +53,7 @@ exports[`Channel component snapshot channel not joined 1`] = `
       </span>
     </div>
     <div
-      className="channel__footer"
+      className="channel__footer channel__footer--join"
     >
       <button
         className="blue"
@@ -129,7 +129,7 @@ exports[`Channel component snapshot channel selected with msgs 1`] = `
       </div>
     </div>
     <div
-      className="channel__footer"
+      className="channel__footer channel__footer--join"
     >
       <button
         className="blue"
@@ -160,7 +160,7 @@ exports[`Channel component snapshot channel selected with no msgs 1`] = `
       </span>
     </div>
     <div
-      className="channel__footer"
+      className="channel__footer channel__footer--join"
     >
       <button
         className="blue"
