@@ -94,7 +94,7 @@ exports[`Channel component snapshot channel selected with msgs 1`] = `
       className="channel__section"
     >
       <div
-        className="message"
+        className="message "
       >
         <div
           className="message__left"

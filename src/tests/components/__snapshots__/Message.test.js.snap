@@ -2,7 +2,7 @@
 
 exports[`Message component snapshot channel not selected 1`] = `
 <div
-  className="message"
+  className="message "
 >
   <div
     className="message__left"

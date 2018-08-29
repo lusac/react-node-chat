@@ -152,6 +152,13 @@ describe('Channel component', () => {
   })
 
   it('joinChannel method', () => {
+    const d = new Date('2017-06-13T04:41:20')
+    Date = class extends Date {
+      constructor() {
+        return d
+      }
+    }
+
     let
       socket = { emit: (a, b) => (a, b) },
       user = {name: 'xunda', color: 2},
@@ -160,6 +167,6 @@ describe('Channel component', () => {
 
     const spy = jest.spyOn(wrapper.instance().props.socket, 'emit')
     wrapper.instance().joinChannel()
-    expect(spy).toHaveBeenCalledWith('join channel', 1)
+    expect(spy).toHaveBeenCalledWith('join channel', {"channelID": 1, "msg": {"color": 2, "date": d, "text": "xunda entrou no canal", "type": "auto", "username": "xunda"}})
   })
 })
