@@ -1,0 +1,26 @@
+Primeiros passos:
+
+1) Descobrir como o react se comporta com websockets.
+2) Descobrir como o node se comporta com websockets.
+3) Aprender o básico de nodejs.
+
+Comecei lendo este post[1] que explicava como criar um chat com nodejs e websockets. Ele ensiva a usar websockets vanilla e me pareceu bem tranquilo, então fui seguindo com o desenvolvimento.
+
+Após ter o basico de websockets rodando, comecei a mockar os dados e fui me preocupar com o layout. Ao criar a arquitetura, senti necessidade de usar Redux pra compartilhar estados que a aplicação teria.
+
+Com o layout pronto, comecei a desenvolver a interação entre o client e o server e fui me aprofundando no websockets. Começou a ficar complexo e senti a necessidade de usar alguma lib que abstraisse algumas coisas. Foi ai que migrei para o Socket.io[2].
+O maior ganho dele, pra mim, é facilidade pra controlar a conexão entre o front e o backend.
+
+Feito isso, comecei a perceber que a minha arquitetura não estava boa. O Redux não estava fazendo seu papel corretamente e muitas vezes o socket.io passava por cima dele. Foi ai que decidi remover o Redux do projeto e deixar que os listeners do Socket.io controlassem o estado da aplicação.
+
+    -Mudando arquitetura. Remoção do Redux, pois o chat foi pra um caminho onde ele não seria necessário. Como comecei com tudo mockado, arquitetei pensando em requests, oq nãoa contece no WS
+
+Tendo a estrutura das conversas e canais consolidadas, comecei a me preocupar em criar algumas features importantes e de dar mais carinho ao layout.
+
+9) Layout + refactor grid e componentes
+
+Com tudo pronto, foi só subir para o heroku.
+
+
+[1] https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61
+[2] https://socket.io/
