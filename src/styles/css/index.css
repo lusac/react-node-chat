@@ -89,7 +89,6 @@ button {
   font-size: 16px;
   cursor: pointer;
   padding: 9px 19px;
-  margin-left: 10px;
   outline: none;
 }
 button[disabled] {
@@ -233,6 +232,12 @@ button.blue:hover {
   outline: none;
   padding: 10px;
   font-size: 14px;
+}
+.channel__footer--join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #e1e1e1;
 }
 .channel__footer form {
   width: 100%;

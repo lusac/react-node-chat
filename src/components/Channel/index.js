@@ -63,7 +63,7 @@ export default class Channel extends React.Component {
               <span>nenhuma mensagem</span>}
           </div>
 
-          <div className="channel__footer">
+          <div className={'channel__footer ' + (!this.props.channel.joined ? 'channel__footer--join': '')}>
             {this.props.channel.joined &&
               <form onSubmit={this.onMsgSubmit.bind(this)}>
                 <input
