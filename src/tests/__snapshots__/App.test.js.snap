@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Initial 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="form-choose-name"
+  >
+    <div
+      className="form-choose-name__content"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <label>
+          Escolha um apelido
+        </label>
+        <input
+          onChange={[Function]}
+          placeholder="ex: lucas.cruz"
+          type="text"
+          value={undefined}
+        />
+        <button
+          className="blue"
+        >
+          entrar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;

@@ -59,7 +59,7 @@ describe('Channel component', () => {
       })
 
       it('correct label', () => {
-        expect(wrapper.find('.channel__empty-state strong').get(0).props.children).toBe('Escolha ou crie um canal para conversar com outras pessoas!')
+        expect(wrapper.find('.channel__empty-state strong').at(0).text()).toBe('Escolha ou crie um canal para conversar com outras pessoas!')
       })
     })
 
@@ -71,7 +71,7 @@ describe('Channel component', () => {
       })
 
       it('correct label', () => {
-        expect(wrapper.find('.channel__section>span').get(0).props.children).toBe('nenhuma mensagem')
+        expect(wrapper.find('.channel__section>span').at(0).text()).toBe('nenhuma mensagem')
       })
     })
 

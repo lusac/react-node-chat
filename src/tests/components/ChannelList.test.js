@@ -57,8 +57,8 @@ describe('ChannelList component', () => {
     })
 
     it('correct badges', () => {
-      expect(wrapper.find('.badge').get(0).props.children).toBe(3)
-      expect(wrapper.find('.badge').get(1).props.children).toBe(10)
+      expect(wrapper.find('.badge').at(0).text()).toBe('3')
+      expect(wrapper.find('.badge').at(1).text()).toBe('10')
     })
   })
 

@@ -1,4 +1,4 @@
-/* global process navigator document */
+/* global process navigator document Notification */
 import React, { Component } from 'react'
 import './styles/css/index.css'
 import Channel from './components/Channel'
