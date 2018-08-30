@@ -1,12 +1,12 @@
 /* global require module */
-var uuidv4 = require('uuid/v4')
+var uuid = require('uuid')
 
 module.exports = () => {
   const channels = {}
 
   const createChannel = (socket, io, name) => {
     let channel = {
-      id: uuidv4(),
+      id: uuid.v4(),
       name: name,
       msgs: []
     }

@@ -15,9 +15,10 @@
   "scripts": {
     "start": "react-scripts start | node api/server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test:client": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "sass": "sass --watch src/styles/scss:src/styles/css",
+    "test:api": "jest api/*test.js",
     "postinstall": "yarn build"
   },
   "devDependencies": {

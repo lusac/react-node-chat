@@ -47,5 +47,9 @@ Websocket -> `localhost:3001`
 
 Para rodar os testes da parte client:
 
-`yarn test`
+`yarn test:client`
+
+Para rodar os testes da api:
+
+`yarn test:api`
 
