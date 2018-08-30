@@ -18,7 +18,7 @@
     "test:client": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "sass": "sass --watch src/styles/scss:src/styles/css",
-    "test:api": "jest api/*test.js",
+    "test:api": "jest api/*test.js --coverage",
     "postinstall": "yarn build"
   },
   "devDependencies": {
