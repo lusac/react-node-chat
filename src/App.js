@@ -1,4 +1,4 @@
-/* global process */
+/* global process navigator document */
 import React, { Component } from 'react'
 import './styles/css/index.css'
 import Channel from './components/Channel'
@@ -71,6 +71,8 @@ class App extends Component {
     })
 
     socket.on('message', (data) => {
+      this.pushNotification(data)
+
       if (data.channelID === this.state.channel.id) {
         this.handleMessageFromCurrentChannel(data)
       } else {
@@ -81,6 +83,18 @@ class App extends Component {
     this.setState({
       socket: socket
     })
+  }
+
+  pushNotification(data) {
+    if (!document.hasFocus()) {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification(this.state.channels[data.channelID].name, {
+          body: `${data.msg.username}: ${data.msg.text}`,
+          vibrate: [200, 100, 200, 100, 200, 100, 200],
+          tag: 'vibration-sample'
+        })
+      })
+    }
   }
 
   handleMessageFromCurrentChannel(data) {
