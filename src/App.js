@@ -33,7 +33,11 @@ class App extends Component {
 
     socket.on('got channel', (channel) => {
       this.setState({
-        channel: channel
+        channel: channel,
+        notifications: {
+          ...this.state.notifications,
+          [channel.id]: 0
+        }
       })
     })
 
@@ -62,10 +66,6 @@ class App extends Component {
             ...this.state.user.channels,
             channel.id
           ]
-        },
-        notifications: {
-          ...this.state.notifications,
-          [channel.id]: 0
         }
       })
     })
