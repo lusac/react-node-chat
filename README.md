@@ -15,6 +15,7 @@ Features
 - [x] Exibir histórico do Channel antes de dar Join
 - [x] Notificação na listagem de Channel quando receber mensagem em um Channel não ativo
 - [x] Push notification com Service Workers (quando usuário não estiver com a aba ativa)
+- [ ] Push notification no chrome está intermitente
 - [ ] Apagar Channel
 - [ ] Persistir Channel e Usuários em um database
 - [ ] Mostrar usuários do Channel
