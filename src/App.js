@@ -86,7 +86,7 @@ class App extends Component {
   }
 
   pushNotification(data) {
-    if (!document.hasFocus()) {
+    if (!document.hasFocus() && Notification.permission !== 'denied') {
       navigator.serviceWorker.ready.then((registration) => {
         registration.showNotification(this.state.channels[data.channelID].name, {
           body: `${data.msg.username}: ${data.msg.text}`,
