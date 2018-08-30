@@ -18,7 +18,9 @@ Tendo a estrutura das conversas e canais consolidadas, comecei a me preocupar em
 
 Com tudo pronto, foi só subir para o heroku.
 
-Com a aplicação rodando, pensei que seria interessante brincar com service workers e tentar implementar um push notification nas trocas de mensagens. Apanhei um pouco mas no final funcionou bem :P.
+Com a aplicação rodando, pensei que seria interessante brincar com service workers e tentar implementar um push notification nas trocas de mensagens. Apanhei um pouco mas no final funcionou :P. Está com alguma configuração errada no chrome que nem sempre ele pede autorização pra mandar o push, mas no firefox funciona corretamente.
+
+Mais detalhes sobre features, favor olhar o README.md
 
 [1] https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61
 [2] https://socket.io/
